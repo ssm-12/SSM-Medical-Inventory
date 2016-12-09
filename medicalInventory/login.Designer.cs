@@ -30,8 +30,8 @@
         {
             this.lblUserName = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelImg = new System.Windows.Forms.Panel();
@@ -58,22 +58,22 @@
             this.lblPassword.TabIndex = 1;
             this.lblPassword.Text = "Password";
             // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(142, 56);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(130, 22);
-            this.txtPassword.TabIndex = 2;
-            // 
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUserName.Location = new System.Drawing.Point(142, 15);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(130, 22);
-            this.txtUserName.TabIndex = 3;
+            this.txtUserName.TabIndex = 2;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(142, 54);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(130, 22);
+            this.txtPassword.TabIndex = 3;
             // 
             // btnLogin
             // 
@@ -90,8 +90,8 @@
             // 
             this.panel1.Controls.Add(this.lblUserName);
             this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.txtUserName);
             this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.txtUserName);
             this.panel1.Controls.Add(this.lblPassword);
             this.panel1.Location = new System.Drawing.Point(245, 12);
             this.panel1.Name = "panel1";

@@ -59,6 +59,12 @@
     <Compile Include="mainMenu.designer.cs">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stock.Designer.cs">
+      <DependentUpon>stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="welcomeSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stock.resx">
+      <DependentUpon>stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="welcomeSplash.resx">
       <DependentUpon>welcomeSplash.cs</DependentUpon>

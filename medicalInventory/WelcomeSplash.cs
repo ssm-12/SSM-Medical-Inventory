@@ -38,9 +38,9 @@ namespace medicalInventory
             {
                 timer1.Enabled = false;
                 MessageBox.Show("Welcome to SSM Medical Inverntory System.");
-                this.Hide();
                 login frmLogin = new login();
                 frmLogin.Show();
+                this.Hide();
             }
             else
                 progressBar.Value++;

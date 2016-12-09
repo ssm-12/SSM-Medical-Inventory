@@ -25,9 +25,11 @@ namespace medicalInventory
         }
 
         //Customer Details - Button Click
-        private void button1_Click(object sender, EventArgs e)
+        private void btnStock_click(object sender, EventArgs e)
         {
-            
+            stock frmStock = new stock();
+            frmStock.MdiParent = this;
+            frmStock.Show();
         }
 
         private void MainMenu_Load(object sender, EventArgs e)

@@ -20,18 +20,31 @@ namespace medicalInventory
         public login()
         {
             InitializeComponent();
+            txtPassword.Focus();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            int val;
+            objBOlogin.userName = txtPassword.Text;
+            objBOlogin.password = txtUserName.Text;
 
-            objBOlogin.userName = txtUserName.Text;
-            objBOlogin.password = txtPassword.Text;
+            val=objBAlogin.funcAuthenticate(objBOlogin);
+            if(val!=1)
+            {
+                MessageBox.Show("Invalid Login Credentials!!! Please try again");
+                txtPassword.Text = "";
+                txtUserName.Text = "";
+                txtUserName.Focus();
+                //Failure Msg
 
-            objBAlogin.funcAuthenticate(objBOlogin);
-
-            MainMenu frmMainMenu = new MainMenu();
-            frmMainMenu.Show();
+            }
+            else
+            {
+                MainMenu frmMainMenu = new MainMenu();
+                frmMainMenu.Show();
+            }
+            
 
             
         }
@@ -43,7 +56,8 @@ namespace medicalInventory
 
         private void login_Load(object sender, EventArgs e)
         {
-
+            MessageBox.Show("");
+            txtPassword.Focus();
         }
     }
 }
