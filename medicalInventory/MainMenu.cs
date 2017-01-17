@@ -53,5 +53,10 @@ namespace medicalInventory
         {
             
         }
+
+        private void btnAccount_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

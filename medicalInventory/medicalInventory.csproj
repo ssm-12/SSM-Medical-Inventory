@@ -59,11 +59,23 @@
     <Compile Include="mainMenu.designer.cs">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="purchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="purchase.Designer.cs">
+      <DependentUpon>purchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="stock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="stock.Designer.cs">
       <DependentUpon>stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="supplierDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="supplierDetails.Designer.cs">
+      <DependentUpon>supplierDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="welcomeSplash.cs">
       <SubType>Form</SubType>
@@ -78,8 +90,14 @@
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="purchase.resx">
+      <DependentUpon>purchase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="stock.resx">
       <DependentUpon>stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="supplierDetails.resx">
+      <DependentUpon>supplierDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="welcomeSplash.resx">
       <DependentUpon>welcomeSplash.cs</DependentUpon>

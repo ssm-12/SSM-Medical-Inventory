@@ -165,7 +165,7 @@
             this.btn1.Name = "btn1";
             this.btn1.Size = new System.Drawing.Size(182, 35);
             this.btn1.TabIndex = 5;
-            this.btn1.Text = "Extra1";
+            this.btn1.Text = "Supplier Details";
             this.btn1.UseVisualStyleBackColor = true;
             // 
             // btnAccount
@@ -175,8 +175,9 @@
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(182, 35);
             this.btnAccount.TabIndex = 3;
-            this.btnAccount.Text = "Account";
+            this.btnAccount.Text = "Purchase";
             this.btnAccount.UseVisualStyleBackColor = true;
+            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
             // 
             // btnReturn
             // 
