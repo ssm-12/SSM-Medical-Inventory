@@ -205,8 +205,8 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(121, 17);
-            this.toolStripStatusLabel1.Text = "Gold Price (22 Carat)";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(54, 17);
+            this.toolStripStatusLabel1.Text = "Footer 1";
             // 
             // lblGoldPrice
             // 
@@ -217,8 +217,8 @@
             // 
             this.toolStripStatusLabel3.Margin = new System.Windows.Forms.Padding(100, 3, 0, 2);
             this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(70, 17);
-            this.toolStripStatusLabel3.Text = "Silver Price";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(54, 17);
+            this.toolStripStatusLabel3.Text = "Footer 2";
             // 
             // lblSilverPrice
             // 
@@ -244,7 +244,7 @@
             this.IsMdiContainer = true;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Welcome";
+            this.Text = "Welcome to SSM Inventory System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.groupBox1.ResumeLayout(false);

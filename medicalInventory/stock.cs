@@ -16,5 +16,10 @@ namespace medicalInventory
         {
             InitializeComponent();
         }
+
+        private void stock_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
