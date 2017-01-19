@@ -103,5 +103,10 @@ namespace medicalInventory
                 }
             }
         }
+
+        private void btnSupply_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

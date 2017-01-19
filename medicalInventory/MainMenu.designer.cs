@@ -134,7 +134,7 @@
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(182, 35);
             this.btn2.TabIndex = 6;
-            this.btn2.Text = "Extra2";
+            this.btn2.Text = "Buyer Details";
             this.btn2.UseVisualStyleBackColor = true;
             // 
             // btnRetail
@@ -157,6 +157,7 @@
             this.btnSupply.TabIndex = 2;
             this.btnSupply.Text = "Supply";
             this.btnSupply.UseVisualStyleBackColor = true;
+            this.btnSupply.Click += new System.EventHandler(this.btnSupply_Click);
             // 
             // btnSuppDetails
             // 
