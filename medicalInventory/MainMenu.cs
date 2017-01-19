@@ -27,9 +27,16 @@ namespace medicalInventory
         //Customer Details - Button Click
         private void btnStock_click(object sender, EventArgs e)
         {
-            stock frmStock = new stock();
-            frmStock.MdiParent = this;
-            frmStock.Show();
+            if (!funcIsFormOpen("stock"))
+            {
+                stock frmStock = new stock();
+                frmStock.MdiParent = this;
+                frmStock.Show();
+            }
+            else
+            {
+                funcBringToFront("stock");
+            }
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -57,6 +64,44 @@ namespace medicalInventory
         private void btnAccount_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSuppDetails_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("supplierDetails"))
+            {
+                supplierDetails frmSupDetails = new supplierDetails();
+                frmSupDetails.MdiParent = this;
+                frmSupDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("supplierDetails");
+            }
+        }
+
+        //Check if the form is already open
+        private bool funcIsFormOpen(string strFrmName)
+        { 
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                if (Application.OpenForms[i].Name == strFrmName)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void funcBringToFront(string strFrmName)
+        {
+            for (int i = 0; i < Application.OpenForms.Count; i++)
+            {
+                if (Application.OpenForms[i].Name == strFrmName)
+                {
+                    Application.OpenForms[i].BringToFront();
+                }
+            }
         }
     }
 }

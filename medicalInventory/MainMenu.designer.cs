@@ -36,7 +36,7 @@
             this.btn2 = new System.Windows.Forms.Button();
             this.btnRetail = new System.Windows.Forms.Button();
             this.btnSupply = new System.Windows.Forms.Button();
-            this.btn1 = new System.Windows.Forms.Button();
+            this.btnSuppDetails = new System.Windows.Forms.Button();
             this.btnAccount = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -77,7 +77,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btn2, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnRetail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSupply, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.btn1, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.btnSuppDetails, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.btnAccount, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnReturn, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 43);
@@ -158,15 +158,16 @@
             this.btnSupply.Text = "Supply";
             this.btnSupply.UseVisualStyleBackColor = true;
             // 
-            // btn1
+            // btnSuppDetails
             // 
-            this.btn1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn1.Location = new System.Drawing.Point(3, 249);
-            this.btn1.Name = "btn1";
-            this.btn1.Size = new System.Drawing.Size(182, 35);
-            this.btn1.TabIndex = 5;
-            this.btn1.Text = "Supplier Details";
-            this.btn1.UseVisualStyleBackColor = true;
+            this.btnSuppDetails.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSuppDetails.Location = new System.Drawing.Point(3, 249);
+            this.btnSuppDetails.Name = "btnSuppDetails";
+            this.btnSuppDetails.Size = new System.Drawing.Size(182, 35);
+            this.btnSuppDetails.TabIndex = 5;
+            this.btnSuppDetails.Text = "Supplier Details";
+            this.btnSuppDetails.UseVisualStyleBackColor = true;
+            this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
             // 
             // btnAccount
             // 
@@ -267,7 +268,7 @@
         private System.Windows.Forms.Button btnSupply;
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btn2;
-        private System.Windows.Forms.Button btn1;
+        private System.Windows.Forms.Button btnSuppDetails;
         private System.Windows.Forms.Button btnDashboard;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

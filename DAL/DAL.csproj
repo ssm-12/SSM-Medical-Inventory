@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALlogin.cs" />
+    <Compile Include="DALSuppDetails.cs" />
     <Compile Include="DB_Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

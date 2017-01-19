@@ -43,10 +43,15 @@ namespace medicalInventory
             {
                 MainMenu frmMainMenu = new MainMenu();
                 frmMainMenu.Show();
+                this.Hide();
             }
-            
-
-            
+        }
+        private void txtPassword_keypress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                btnLogin_Click(sender, e);
+            }
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -56,7 +61,6 @@ namespace medicalInventory
 
         private void login_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("");
             txtPassword.Focus();
         }
     }
