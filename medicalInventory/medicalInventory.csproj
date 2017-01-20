@@ -47,6 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="buyerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="buyerDetails.Designer.cs">
+      <DependentUpon>buyerDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB_SSM_Medical_InventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +95,9 @@
       <DependentUpon>welcomeSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="buyerDetails.resx">
+      <DependentUpon>buyerDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +127,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DB_SSM_Medical_InventoryDataSet.xsc">
+      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DB_SSM_Medical_InventoryDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DB_SSM_Medical_InventoryDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DB_SSM_Medical_InventoryDataSet.xss">
+      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
