@@ -101,7 +101,7 @@
             this.btn3.Location = new System.Drawing.Point(3, 331);
             this.btn3.Name = "btn3";
             this.btn3.Size = new System.Drawing.Size(182, 42);
-            this.btn3.TabIndex = 7;
+            this.btn3.TabIndex = 8;
             this.btn3.Text = "Extra3";
             this.btn3.UseVisualStyleBackColor = true;
             // 
@@ -111,7 +111,7 @@
             this.btnDashboard.Location = new System.Drawing.Point(3, 3);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(182, 35);
-            this.btnDashboard.TabIndex = 8;
+            this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btNewOrder_Click);
@@ -122,7 +122,7 @@
             this.btnStock.Location = new System.Drawing.Point(3, 44);
             this.btnStock.Name = "btnStock";
             this.btnStock.Size = new System.Drawing.Size(182, 35);
-            this.btnStock.TabIndex = 0;
+            this.btnStock.TabIndex = 1;
             this.btnStock.Text = "Stock";
             this.btnStock.UseVisualStyleBackColor = true;
             this.btnStock.Click += new System.EventHandler(this.btnStock_click);
@@ -133,7 +133,7 @@
             this.btn2.Location = new System.Drawing.Point(3, 290);
             this.btn2.Name = "btn2";
             this.btn2.Size = new System.Drawing.Size(182, 35);
-            this.btn2.TabIndex = 6;
+            this.btn2.TabIndex = 7;
             this.btn2.Text = "Buyer Details";
             this.btn2.UseVisualStyleBackColor = true;
             // 
@@ -143,7 +143,7 @@
             this.btnRetail.Location = new System.Drawing.Point(3, 85);
             this.btnRetail.Name = "btnRetail";
             this.btnRetail.Size = new System.Drawing.Size(182, 35);
-            this.btnRetail.TabIndex = 1;
+            this.btnRetail.TabIndex = 2;
             this.btnRetail.Text = "Retail";
             this.btnRetail.UseVisualStyleBackColor = true;
             this.btnRetail.Click += new System.EventHandler(this.button2_Click);
@@ -154,7 +154,7 @@
             this.btnSupply.Location = new System.Drawing.Point(3, 126);
             this.btnSupply.Name = "btnSupply";
             this.btnSupply.Size = new System.Drawing.Size(182, 35);
-            this.btnSupply.TabIndex = 2;
+            this.btnSupply.TabIndex = 3;
             this.btnSupply.Text = "Supply";
             this.btnSupply.UseVisualStyleBackColor = true;
             this.btnSupply.Click += new System.EventHandler(this.btnSupply_Click);
@@ -165,7 +165,7 @@
             this.btnSuppDetails.Location = new System.Drawing.Point(3, 249);
             this.btnSuppDetails.Name = "btnSuppDetails";
             this.btnSuppDetails.Size = new System.Drawing.Size(182, 35);
-            this.btnSuppDetails.TabIndex = 5;
+            this.btnSuppDetails.TabIndex = 6;
             this.btnSuppDetails.Text = "Supplier Details";
             this.btnSuppDetails.UseVisualStyleBackColor = true;
             this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
@@ -176,7 +176,7 @@
             this.btnAccount.Location = new System.Drawing.Point(3, 167);
             this.btnAccount.Name = "btnAccount";
             this.btnAccount.Size = new System.Drawing.Size(182, 35);
-            this.btnAccount.TabIndex = 3;
+            this.btnAccount.TabIndex = 4;
             this.btnAccount.Text = "Purchase";
             this.btnAccount.UseVisualStyleBackColor = true;
             this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
@@ -187,7 +187,7 @@
             this.btnReturn.Location = new System.Drawing.Point(3, 208);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(182, 35);
-            this.btnReturn.TabIndex = 4;
+            this.btnReturn.TabIndex = 5;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 

@@ -10,10 +10,11 @@ namespace BAL
 {
     public class BALSuppDetails
     {
-        DALSuppDetails objDALSuppDetails = new DALSuppDetails();
-        public bool funcInsertSupDetails()
+        private DALSuppDetails objDALSuppDetails = new DALSuppDetails();
+        public bool funcInsertSupDetails(BOSuppDetails objBOSuppDetails)
         {
-            return true;
+            bool retVal = objDALSuppDetails.funcInsertSupDetails(objBOSuppDetails);
+            return retVal;
         }
     }
 }

@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BAL;
 using BO;
+using System.Text.RegularExpressions;
 
 namespace medicalInventory
 {
     public partial class supplierDetails : Form
     {
-        BALSuppDetails objBALSuppDetails = new BALSuppDetails();
-        BOSuppDetails objBOSuppDetails = new BOSuppDetails();
+        private BALSuppDetails objBALSuppDetails = new BALSuppDetails();
+        private BOSuppDetails objBOSuppDetails = new BOSuppDetails();
         public supplierDetails()
         {
             InitializeComponent();
@@ -33,12 +34,26 @@ namespace medicalInventory
                 objBOSuppDetails.tinNo = txtTIN.Text;
                 objBOSuppDetails.emailId = txtEmail.Text;
 
-                if (objBALSuppDetails.funcInsertSupDetails() == true)
+                if (objBALSuppDetails.funcInsertSupDetails(objBOSuppDetails) == true)
                 {
                     MessageBox.Show("Supplier Information Saved Successfully", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funcClearAllFields();
                     //TO DO: Clear all the text fields, set focus to name
                 }
+                else
+                {
+                    MessageBox.Show("Cannot save supplier details", "Error Code : 00001", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void funcClearAllFields()
+        {
+           for (int i = 0; i < tableLayoutPanel1.Controls.Count; i++)
+           {
+               if (Regex.Match(tableLayoutPanel1.Controls[i].Name, @"^txt[1]*").Success)
+                    tableLayoutPanel1.Controls[i].Text = "";
+           }
         }
 
         private bool funcValidateField()
@@ -51,11 +66,6 @@ namespace medicalInventory
                 strMsg += "Enter Supplier Name\n";
                 retVal = false;
             }
-            if (!txtName.Text.All(char.IsLetterOrDigit))
-            {
-                strMsg += "Enter Supplier Name\n";
-                retVal = false;
-            }
 
 
             if (txtContact.Text == "")
@@ -63,9 +73,15 @@ namespace medicalInventory
                 strMsg += "Enter Contact Number \n";
                 retVal = false;
             }
-            if (!txtContact.Text.All(char.IsNumber))
+            if (!funcValidateContactNo(txtContact.Text))
             {
-                strMsg += "Contact Number should only contain numbers \n";
+                strMsg += "Please enter 10 or 11 Digits Contact Number\n";
+                retVal = false;
+            }
+
+            if (!funcValidateEmail(txtEmail.Text) && txtEmail.Text != "")
+            {
+                strMsg += "Please enter valid email id\n";
                 retVal = false;
             }
 
@@ -73,6 +89,26 @@ namespace medicalInventory
                 MessageBox.Show(strMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             return retVal;
+        }
+
+        public bool funcValidateEmail(string email)
+        {
+            Regex expr = new Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (expr.IsMatch(email))
+            {
+                return true;
+            }
+            else return false;
+        }
+
+        public static bool funcValidateContactNo(string number)
+        {
+            return Regex.Match(number, @"^[0-9]{1}[0-9]{9,10}$").Success;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
