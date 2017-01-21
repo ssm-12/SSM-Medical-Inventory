@@ -38,6 +38,7 @@ namespace medicalInventory
                 {
                     MessageBox.Show("Supplier Information Saved Successfully", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     funcClearAllFields();
+                    txtName.Focus();
                     //TO DO: Clear all the text fields, set focus to name
                 }
                 else

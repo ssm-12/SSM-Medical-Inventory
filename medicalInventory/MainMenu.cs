@@ -25,18 +25,9 @@ namespace medicalInventory
         }
 
         //Customer Details - Button Click
-        private void btnStock_click(object sender, EventArgs e)
+        private void btnProduct_click(object sender, EventArgs e)
         {
-            if (!funcIsFormOpen("stock"))
-            {
-                stock frmStock = new stock();
-                frmStock.MdiParent = this;
-                frmStock.Show();
-            }
-            else
-            {
-                funcBringToFront("stock");
-            }
+            contextMenuOnProductBtn.Show(btnProduct, new Point(btnProduct.Width, 0));
         }
 
         private void MainMenu_Load(object sender, EventArgs e)
@@ -107,6 +98,18 @@ namespace medicalInventory
         private void btnSupply_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripAddProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripModifyProduct_Click(object sender, EventArgs e)
+        {
+            productDetails frmProdDetails = new productDetails(2);
+            frmProdDetails.MdiParent = this;
+            frmProdDetails.Show();
         }
     }
 }

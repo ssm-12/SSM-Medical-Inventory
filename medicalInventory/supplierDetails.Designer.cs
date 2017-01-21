@@ -364,7 +364,7 @@
             this.Controls.Add(this.tabControl1);
             this.MinimizeBox = false;
             this.Name = "supplierDetails";
-            this.Text = "supplierDetails";
+            this.Text = "Supplier Details";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

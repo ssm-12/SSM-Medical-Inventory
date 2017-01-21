@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btn3 = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnStock = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.btn2 = new System.Windows.Forms.Button();
             this.btnRetail = new System.Windows.Forms.Button();
             this.btnSupply = new System.Windows.Forms.Button();
@@ -45,9 +46,13 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblSilverPrice = new System.Windows.Forms.ToolStripStatusLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.contextMenuOnProductBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripAddProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripModifyProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuOnProductBtn.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,7 +78,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.btn3, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.btnDashboard, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnStock, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnProduct, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btn2, 0, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnRetail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSupply, 0, 3);
@@ -116,16 +121,16 @@
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btNewOrder_Click);
             // 
-            // btnStock
+            // btnProduct
             // 
-            this.btnStock.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnStock.Location = new System.Drawing.Point(3, 44);
-            this.btnStock.Name = "btnStock";
-            this.btnStock.Size = new System.Drawing.Size(182, 35);
-            this.btnStock.TabIndex = 1;
-            this.btnStock.Text = "Stock";
-            this.btnStock.UseVisualStyleBackColor = true;
-            this.btnStock.Click += new System.EventHandler(this.btnStock_click);
+            this.btnProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnProduct.Location = new System.Drawing.Point(3, 44);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(182, 35);
+            this.btnProduct.TabIndex = 1;
+            this.btnProduct.Text = "Product";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_click);
             // 
             // btn2
             // 
@@ -236,6 +241,29 @@
             this.linkLabel1.Size = new System.Drawing.Size(0, 13);
             this.linkLabel1.TabIndex = 4;
             // 
+            // contextMenuOnProductBtn
+            // 
+            this.contextMenuOnProductBtn.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuOnProductBtn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripAddProduct,
+            this.toolStripModifyProduct});
+            this.contextMenuOnProductBtn.Name = "contextMenuOnProductBtn";
+            this.contextMenuOnProductBtn.Size = new System.Drawing.Size(201, 70);
+            // 
+            // toolStripAddProduct
+            // 
+            this.toolStripAddProduct.Name = "toolStripAddProduct";
+            this.toolStripAddProduct.Size = new System.Drawing.Size(200, 22);
+            this.toolStripAddProduct.Text = "Add New Product";
+            this.toolStripAddProduct.Click += new System.EventHandler(this.toolStripAddProduct_Click);
+            // 
+            // toolStripModifyProduct
+            // 
+            this.toolStripModifyProduct.Name = "toolStripModifyProduct";
+            this.toolStripModifyProduct.Size = new System.Drawing.Size(200, 22);
+            this.toolStripModifyProduct.Text = "Modify Existing Product";
+            this.toolStripModifyProduct.Click += new System.EventHandler(this.toolStripModifyProduct_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,6 +282,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuOnProductBtn.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,7 +291,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnStock;
+        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnRetail;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Button btnAccount;
@@ -278,5 +307,8 @@
         private System.Windows.Forms.ToolStripStatusLabel lblSilverPrice;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuOnProductBtn;
+        private System.Windows.Forms.ToolStripMenuItem toolStripAddProduct;
+        private System.Windows.Forms.ToolStripMenuItem toolStripModifyProduct;
     }
 }
