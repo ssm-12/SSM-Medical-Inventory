@@ -236,8 +236,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBrand.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBrand.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBrand.DataSource = this.brandBindingSource;
-            this.comboBrand.DisplayMember = "brand";
             this.comboBrand.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBrand.FormattingEnabled = true;
@@ -245,7 +243,6 @@
             this.comboBrand.Name = "comboBrand";
             this.comboBrand.Size = new System.Drawing.Size(232, 24);
             this.comboBrand.TabIndex = 3;
-            this.comboBrand.ValueMember = "ID";
             this.comboBrand.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBrand_KeyPress);
             // 
             // brandBindingSource
@@ -265,8 +262,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboGeneric.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboGeneric.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboGeneric.DataSource = this.genericsBindingSource;
-            this.comboGeneric.DisplayMember = "generic_name";
             this.comboGeneric.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboGeneric.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboGeneric.FormattingEnabled = true;
@@ -274,7 +269,6 @@
             this.comboGeneric.Name = "comboGeneric";
             this.comboGeneric.Size = new System.Drawing.Size(230, 24);
             this.comboGeneric.TabIndex = 3;
-            this.comboGeneric.ValueMember = "gen_id";
             this.comboGeneric.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboGeneric_KeyPress);
             // 
             // genericsBindingSource

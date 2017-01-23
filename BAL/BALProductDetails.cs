@@ -12,13 +12,13 @@ namespace BAL
     public class BALProductDetails
     {
         DALProductDetails objDALProductDetails = new DALProductDetails();
-        /*
+        
         public DataTable funcPopulateBrand()
         {
             DataTable dt = new DataTable();
             dt = objDALProductDetails.funcPopulateBrand();
             return dt;
         }
-         */
+         
     }
 }

@@ -14,8 +14,8 @@ namespace medicalInventory
 {
     public partial class buyerDetails : Form
     {
-        BALBuyerDetails BALbuyerDL = new BALBuyerDetails();
-        BOBuyerDetails BObuyerDL = new BOBuyerDetails();
+        BALBuyerDetails objBALbuyerDL = new BALBuyerDetails();
+        BOBuyerDetails objBObuyerDL = new BOBuyerDetails();
         public buyerDetails()
         {
             InitializeComponent();
@@ -25,18 +25,19 @@ namespace medicalInventory
         {
             try
             {
-                BObuyerDL.buyerName = txtBuyerName.Text;
-                BObuyerDL.buyerContactNo = txtBuyerContact.Text;
-                BObuyerDL.buyerAddr1 = txtBuyerAddr1.Text;
-                BObuyerDL.buyerAddr2 = txtBuyerAddr2.Text;
-                BObuyerDL.buyerLlNo = txtBuyerDL.Text;
-                BObuyerDL.buyerTinNo = txtBuyerTIN.Text;
-                BObuyerDL.buyerEmailId = txtBuyerEmail.Text;
+                objBObuyerDL.buyerName = txtBuyerName.Text;
+                objBObuyerDL.buyerContactNo = txtBuyerContact.Text;
+                objBObuyerDL.buyerAddr1 = txtBuyerAddr1.Text;
+                objBObuyerDL.buyerAddr2 = txtBuyerAddr2.Text;
+                objBObuyerDL.buyerLlNo = txtBuyerDL.Text;
+                objBObuyerDL.buyerTinNo = txtBuyerTIN.Text;
+                objBObuyerDL.buyerEmailId = txtBuyerEmail.Text;
 
-                int result = BALbuyerDL.SaveBuyerDetails(BObuyerDL);
+                int result = objBALbuyerDL.SaveBuyerDetails(objBObuyerDL);
                 if(result>0)
                 {
                     //Display Confirmation Message
+                    lblMsg.Text = "Record Saved Successfully!";
                 }
                 else
                 {
@@ -50,8 +51,8 @@ namespace medicalInventory
             }
             finally
             {
-                BALbuyerDL = null;
-                BObuyerDL = null;
+                objBALbuyerDL = null;
+                objBObuyerDL = null;
             }
         }
 

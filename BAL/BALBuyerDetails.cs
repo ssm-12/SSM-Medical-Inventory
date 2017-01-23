@@ -10,12 +10,11 @@ namespace BAL
 {
     public class BALBuyerDetails
     {
-        DALBuyerDetails DAbuyerDL=new DALBuyerDetails();
+        DALBuyerDetails objDAbuyerDL = new DALBuyerDetails();
 
-        public int SaveBuyerDetails(BOBuyerDetails BObuyerDL)
+        public int SaveBuyerDetails(BOBuyerDetails objBObuyerDL)
         {
-          //  return DAbuyerDL.SaveBuyerDetails(BObuyerDL);
-            return 0;
+            return objDAbuyerDL.SaveBuyerDetails(objBObuyerDL);
         }
     }
 }

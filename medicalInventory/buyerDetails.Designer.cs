@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblMsg = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -51,12 +52,7 @@
             this.txtBuyerTIN = new System.Windows.Forms.TextBox();
             this.txtBuyerEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblMsg = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.grdBuyerDetails = new System.Windows.Forms.DataGridView();
-            this.dB_SSM_Medical_InventoryDataSet = new medicalInventory.DB_SSM_Medical_InventoryDataSet();
-            this.customermasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customer_masterTableAdapter = new medicalInventory.DB_SSM_Medical_InventoryDataSetTableAdapters.customer_masterTableAdapter();
             this.custidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.custnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dLnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,14 +61,18 @@
             this.addressline2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customermasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dB_SSM_Medical_InventoryDataSet = new medicalInventory.DB_SSM_Medical_InventoryDataSet();
+            this.label2 = new System.Windows.Forms.Label();
+            this.customer_masterTableAdapter = new medicalInventory.DB_SSM_Medical_InventoryDataSetTableAdapters.customer_masterTableAdapter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBuyerDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customermasterBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -100,6 +100,15 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Add Buyer";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblMsg
+            // 
+            this.lblMsg.AutoSize = true;
+            this.lblMsg.Location = new System.Drawing.Point(228, 249);
+            this.lblMsg.Name = "lblMsg";
+            this.lblMsg.Size = new System.Drawing.Size(11, 13);
+            this.lblMsg.TabIndex = 4;
+            this.lblMsg.Text = "*";
             // 
             // tableLayoutPanel2
             // 
@@ -376,28 +385,6 @@
             this.tabPage2.Text = "Edit/Remove Buyer";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lblMsg
-            // 
-            this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(228, 249);
-            this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(11, 13);
-            this.lblMsg.TabIndex = 4;
-            this.lblMsg.Text = "*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Buyer Details";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // grdBuyerDetails
             // 
             this.grdBuyerDetails.AllowUserToAddRows = false;
@@ -418,20 +405,6 @@
             this.grdBuyerDetails.Name = "grdBuyerDetails";
             this.grdBuyerDetails.Size = new System.Drawing.Size(1008, 346);
             this.grdBuyerDetails.TabIndex = 2;
-            // 
-            // dB_SSM_Medical_InventoryDataSet
-            // 
-            this.dB_SSM_Medical_InventoryDataSet.DataSetName = "DB_SSM_Medical_InventoryDataSet";
-            this.dB_SSM_Medical_InventoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customermasterBindingSource
-            // 
-            this.customermasterBindingSource.DataMember = "customer_master";
-            this.customermasterBindingSource.DataSource = this.dB_SSM_Medical_InventoryDataSet;
-            // 
-            // customer_masterTableAdapter
-            // 
-            this.customer_masterTableAdapter.ClearBeforeFill = true;
             // 
             // custidDataGridViewTextBoxColumn
             // 
@@ -481,6 +454,33 @@
             this.emailDataGridViewTextBoxColumn.HeaderText = "email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             // 
+            // customermasterBindingSource
+            // 
+            this.customermasterBindingSource.DataMember = "customer_master";
+            this.customermasterBindingSource.DataSource = this.dB_SSM_Medical_InventoryDataSet;
+            // 
+            // dB_SSM_Medical_InventoryDataSet
+            // 
+            this.dB_SSM_Medical_InventoryDataSet.DataSetName = "DB_SSM_Medical_InventoryDataSet";
+            this.dB_SSM_Medical_InventoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 22);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Buyer Details";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // customer_masterTableAdapter
+            // 
+            this.customer_masterTableAdapter.ClearBeforeFill = true;
+            // 
             // buyerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -499,8 +499,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBuyerDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customermasterBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
