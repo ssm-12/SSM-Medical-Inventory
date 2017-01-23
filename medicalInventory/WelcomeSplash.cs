@@ -12,6 +12,7 @@ namespace medicalInventory
 {
     public partial class splash : Form
     {
+        [STAThread]
         static int Main(string[] args)
         {
             //...
