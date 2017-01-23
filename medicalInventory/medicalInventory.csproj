@@ -53,6 +53,16 @@
     <Compile Include="buyerDetails.Designer.cs">
       <DependentUpon>buyerDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetBrand.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetBrand.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetGenerics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetGenerics.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DB_SSM_Medical_InventoryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +146,28 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DataSetBrand.xsc">
+      <DependentUpon>DataSetBrand.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetBrand.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetBrand.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetBrand.xss">
+      <DependentUpon>DataSetBrand.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetGenerics.xsc">
+      <DependentUpon>DataSetGenerics.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetGenerics.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetGenerics.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetGenerics.xss">
+      <DependentUpon>DataSetGenerics.xsd</DependentUpon>
+    </None>
     <None Include="DB_SSM_Medical_InventoryDataSet.xsc">
       <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
     </None>

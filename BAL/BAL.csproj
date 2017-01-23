@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="BALBuyerDetails.cs" />
     <Compile Include="BALlogin.cs" />
+    <Compile Include="BALProductDetails.cs" />
     <Compile Include="BALSuppDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

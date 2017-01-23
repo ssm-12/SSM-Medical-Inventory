@@ -102,12 +102,14 @@ namespace medicalInventory
 
         private void toolStripAddProduct_Click(object sender, EventArgs e)
         {
-
+            productDetails frmProdDetails = new productDetails(1);//Sent value denotes which tab to open
+            frmProdDetails.MdiParent = this;
+            frmProdDetails.Show();
         }
 
         private void toolStripModifyProduct_Click(object sender, EventArgs e)
         {
-            productDetails frmProdDetails = new productDetails(2);
+            productDetails frmProdDetails = new productDetails(2);//Sent value denotes which tab to open
             frmProdDetails.MdiParent = this;
             frmProdDetails.Show();
         }
