@@ -34,7 +34,7 @@
             this.btn3 = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
-            this.btn2 = new System.Windows.Forms.Button();
+            this.btnBuyerDetails = new System.Windows.Forms.Button();
             this.btnRetail = new System.Windows.Forms.Button();
             this.btnSupply = new System.Windows.Forms.Button();
             this.btnSuppDetails = new System.Windows.Forms.Button();

@@ -24,7 +24,7 @@ namespace medicalInventory
             funcOpenTabPage(tabNo);
         }
 
-        /*
+        
         private void funcPopulateBrand()
         {
             DataTable dt = new DataTable();
@@ -44,7 +44,7 @@ namespace medicalInventory
             }
 
         }
-        */
+        
 
         private void funcOpenTabPage(int pageNo)
         {
@@ -60,11 +60,8 @@ namespace medicalInventory
 
         private void productDetails_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dataSetBrand.Brand' table. You can move, or remove it, as needed.
-            this.brandTableAdapter.Fill(this.dataSetBrand.Brand);
-            // TODO: This line of code loads data into the 'dataSetGenerics.Generics' table. You can move, or remove it, as needed.
-            this.genericsTableAdapter.Fill(this.dataSetGenerics.Generics);
-            
+
+            funcPopulateBrand();
         }
 
         private void comboBrand_KeyPress(object sender, KeyPressEventArgs e)

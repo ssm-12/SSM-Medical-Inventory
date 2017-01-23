@@ -13,7 +13,7 @@ namespace DAL
     public class DALProductDetails
     {
         DB_Utility objDB_Utility;
-        /*
+        
         public DataTable funcPopulateBrand()
         {
             DataTable dt = new DataTable();
@@ -51,6 +51,6 @@ namespace DAL
                 objDB_Utility.funcCloseConnection();
             }
         }
-         */
+         
     }
 }

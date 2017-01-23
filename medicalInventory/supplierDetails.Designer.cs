@@ -51,26 +51,15 @@
             this.txtTIN = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dB_SSM_Medical_InventoryDataSet1 = new medicalInventory.DB_SSM_Medical_InventoryDataSet1();
             this.suppliermasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.supplier_masterTableAdapter = new medicalInventory.DB_SSM_Medical_InventoryDataSet1TableAdapters.supplier_masterTableAdapter();
-            this.suppidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.suppnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dLnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tINnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressline1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressline2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppliermasterBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -376,6 +365,22 @@
             this.tabPage2.Text = "Edit/Remove Supplier";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.DataSource = this.suppliermasterBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(943, 358);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // suppliermasterBindingSource
+            // 
+            this.suppliermasterBindingSource.DataMember = "supplier_master";
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -388,89 +393,6 @@
             this.label9.TabIndex = 1;
             this.label9.Text = "Supplier Details";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.suppidDataGridViewTextBoxColumn,
-            this.suppnameDataGridViewTextBoxColumn,
-            this.dLnoDataGridViewTextBoxColumn,
-            this.tINnoDataGridViewTextBoxColumn,
-            this.addressline1DataGridViewTextBoxColumn,
-            this.addressline2DataGridViewTextBoxColumn,
-            this.contactnoDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.suppliermasterBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(943, 358);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // dB_SSM_Medical_InventoryDataSet1
-            // 
-            this.dB_SSM_Medical_InventoryDataSet1.DataSetName = "DB_SSM_Medical_InventoryDataSet1";
-            this.dB_SSM_Medical_InventoryDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // suppliermasterBindingSource
-            // 
-            this.suppliermasterBindingSource.DataMember = "supplier_master";
-            this.suppliermasterBindingSource.DataSource = this.dB_SSM_Medical_InventoryDataSet1;
-            // 
-            // supplier_masterTableAdapter
-            // 
-            this.supplier_masterTableAdapter.ClearBeforeFill = true;
-            // 
-            // suppidDataGridViewTextBoxColumn
-            // 
-            this.suppidDataGridViewTextBoxColumn.DataPropertyName = "supp_id";
-            this.suppidDataGridViewTextBoxColumn.HeaderText = "supp_id";
-            this.suppidDataGridViewTextBoxColumn.Name = "suppidDataGridViewTextBoxColumn";
-            // 
-            // suppnameDataGridViewTextBoxColumn
-            // 
-            this.suppnameDataGridViewTextBoxColumn.DataPropertyName = "supp_name";
-            this.suppnameDataGridViewTextBoxColumn.HeaderText = "supp_name";
-            this.suppnameDataGridViewTextBoxColumn.Name = "suppnameDataGridViewTextBoxColumn";
-            // 
-            // dLnoDataGridViewTextBoxColumn
-            // 
-            this.dLnoDataGridViewTextBoxColumn.DataPropertyName = "DL_no";
-            this.dLnoDataGridViewTextBoxColumn.HeaderText = "DL_no";
-            this.dLnoDataGridViewTextBoxColumn.Name = "dLnoDataGridViewTextBoxColumn";
-            // 
-            // tINnoDataGridViewTextBoxColumn
-            // 
-            this.tINnoDataGridViewTextBoxColumn.DataPropertyName = "TIN_no";
-            this.tINnoDataGridViewTextBoxColumn.HeaderText = "TIN_no";
-            this.tINnoDataGridViewTextBoxColumn.Name = "tINnoDataGridViewTextBoxColumn";
-            // 
-            // addressline1DataGridViewTextBoxColumn
-            // 
-            this.addressline1DataGridViewTextBoxColumn.DataPropertyName = "address_line1";
-            this.addressline1DataGridViewTextBoxColumn.HeaderText = "address_line1";
-            this.addressline1DataGridViewTextBoxColumn.Name = "addressline1DataGridViewTextBoxColumn";
-            // 
-            // addressline2DataGridViewTextBoxColumn
-            // 
-            this.addressline2DataGridViewTextBoxColumn.DataPropertyName = "address_line2";
-            this.addressline2DataGridViewTextBoxColumn.HeaderText = "address_line2";
-            this.addressline2DataGridViewTextBoxColumn.Name = "addressline2DataGridViewTextBoxColumn";
-            // 
-            // contactnoDataGridViewTextBoxColumn
-            // 
-            this.contactnoDataGridViewTextBoxColumn.DataPropertyName = "contact_no";
-            this.contactnoDataGridViewTextBoxColumn.HeaderText = "contact_no";
-            this.contactnoDataGridViewTextBoxColumn.Name = "contactnoDataGridViewTextBoxColumn";
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             // 
             // supplierDetails
             // 
@@ -491,7 +413,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.suppliermasterBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -523,9 +444,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label9;
-        private DB_SSM_Medical_InventoryDataSet1 dB_SSM_Medical_InventoryDataSet1;
         private System.Windows.Forms.BindingSource suppliermasterBindingSource;
-        private DB_SSM_Medical_InventoryDataSet1TableAdapters.supplier_masterTableAdapter supplier_masterTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn suppidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn suppnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dLnoDataGridViewTextBoxColumn;
