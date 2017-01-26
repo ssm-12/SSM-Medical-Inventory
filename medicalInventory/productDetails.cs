@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BAL;
 using BO;
 using System.Data;
+using System.Text.RegularExpressions;
 
 namespace medicalInventory
 {
@@ -30,9 +31,9 @@ namespace medicalInventory
             DataTable dt = new DataTable();
             dt = objBALProductDetails.funcPopulateBrand();
             //Failed Scenario
-            if (dt.Columns.Count == 1)
+            if (dt.Columns[0].ColumnName == "error")
             {
-                string errorCode = Convert.ToString(dt.Rows[1]["error"]);
+                string errorCode = Convert.ToString(dt.Rows[0]["error"]);
                 MessageBox.Show("Unable Retreive Brands", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //Success Scenario
@@ -44,6 +45,26 @@ namespace medicalInventory
             }
 
         }
+
+        private void funcPopulateGeneric()
+        {
+            DataTable dt = new DataTable();
+            dt = objBALProductDetails.funcPopulateGeneric();
+            //Failed Scenario
+            if (dt.Columns[0].ColumnName == "error")
+            {
+                string errorCode = Convert.ToString(dt.Rows[0]["error"]);
+                MessageBox.Show("Unable Retreive Generic Names", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //Success Scenario
+            else
+            {
+                comboGeneric.DataSource = dt;
+                comboGeneric.DisplayMember = Convert.ToString(dt.Columns[1]);
+                comboGeneric.ValueMember = Convert.ToString(dt.Columns[0]);
+            }
+
+        }
         
 
         private void funcOpenTabPage(int pageNo)
@@ -51,6 +72,7 @@ namespace medicalInventory
             if (pageNo == 1)
             {
                 tabControl1.SelectedTab = tabPage1;
+                txtMedName.Select();
             }
             else if (pageNo == 2)
             {
@@ -60,8 +82,46 @@ namespace medicalInventory
 
         private void productDetails_Load(object sender, EventArgs e)
         {
+            funcInitializeIndividualTab();//All the initialization inside this function
 
-            funcPopulateBrand();
+        }
+
+        //Important - All the functions or initialization while loading page goes here - tab wise
+        private void funcInitializeIndividualTab()
+        {
+            //Add Medicine Tab - Initializations goes here
+            if (tabControl1.SelectedIndex == 0)
+            {
+                funcPopulateBrand();
+                funcPopulateGeneric();
+                funcFormulationList();
+                
+            }
+            //Modify Medicine Tab - Initializations goes here
+            else if (tabControl1.SelectedIndex == 1)//Opened Modify Existing Product Tab
+            {
+                
+            }
+        }
+
+        private void tabControl1_IndexChange(object sender, EventArgs e)
+        {
+            funcInitializeIndividualTab();
+        }
+
+        private void funcFormulationList()
+        {
+            var source = new AutoCompleteStringCollection();
+            source.AddRange(new string[]
+                    {
+                        "Tab",
+                        "Inj",
+                        "Gel",
+                        "Vial",
+                        "Cap",
+                        "Drop"
+                    });
+            txtFormulation.AutoCompleteCustomSource = source;
         }
 
         private void comboBrand_KeyPress(object sender, KeyPressEventArgs e)
@@ -72,6 +132,84 @@ namespace medicalInventory
         {
             comboGeneric.DroppedDown = false;
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (funcUserInputValidation() == true)
+            {
+                objBOProductDetails.medName = txtMedName.Text + " " + txtStrength.Text + " " + txtFormulation.Text;
+                objBOProductDetails.company = comboBrand.Text;
+                objBOProductDetails.genericName = comboGeneric.Text;
+                objBOProductDetails.packing = txtPacking.Text;
+                objBOProductDetails.unit = txtUnit.Text;
+                objBOProductDetails.schedule = txtSchedule.Text;
+                objBOProductDetails.contents = txtContents.Text;
+
+                if (objBALProductDetails.funcInsertProductMaster(objBOProductDetails) == true)
+                {
+                    MessageBox.Show("Product Info Saved Successfully", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funcClearAllFields();
+                    //TO DO: Clear all the text fields, set focus to name
+                }
+                else
+                {
+                    MessageBox.Show("Cannot product details", "Error Code : 00003", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void funcClearAllFields()
+        { 
+            //All the field clearing tasks goes here
+            for (int i = 0; i < tableLayoutPanel1.Controls.Count; i++)
+            {
+                if (Regex.Match(tableLayoutPanel1.Controls[i].Name, @"^txt[1]*").Success)
+                    tableLayoutPanel1.Controls[i].Text = "";
+            }
+            comboBrand.SelectedIndex = 0;
+            comboGeneric.SelectedIndex = 0;
+            txtMedName.Select();
+        }
+
+        private bool funcUserInputValidation()
+        {
+            bool retVal = true;
+            string strMsg = "Please correct the below mentioned error(s): \n";
+            if (txtMedName.Text == "")
+            {
+                retVal = false;
+                strMsg += "Please Enter Medicine Name\n";
+            }
+            if (comboBrand.SelectedValue == null)
+            {
+                retVal = false;
+                strMsg += "Please select company name from the list\n";
+            }
+            if (comboGeneric.SelectedValue == null)
+            {
+                retVal = false;
+                strMsg += "Please select Generic name from the list\n";
+            }
+            if (txtPacking.Text == "")
+            {
+                retVal = false;
+                strMsg += "Please Enter packing details of the product\n";
+            }
+
+            if (retVal == false)
+            {
+                MessageBox.Show(strMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+                
+
+            return retVal;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
     }
 }

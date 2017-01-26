@@ -19,6 +19,19 @@ namespace BAL
             dt = objDALProductDetails.funcPopulateBrand();
             return dt;
         }
+
+        public DataTable funcPopulateGeneric()
+        {
+            DataTable dt = new DataTable();
+            dt = objDALProductDetails.funcPopulateGeneric();
+            return dt;
+        }
+
+        public bool funcInsertProductMaster(BOProductDetails objBOProdDetails)
+        {
+            bool retVal = objDALProductDetails.funcInsertProdDetails(objBOProdDetails);
+            return retVal;
+        }
          
     }
 }
