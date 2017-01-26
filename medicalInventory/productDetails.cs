@@ -100,7 +100,26 @@ namespace medicalInventory
             //Modify Medicine Tab - Initializations goes here
             else if (tabControl1.SelectedIndex == 1)//Opened Modify Existing Product Tab
             {
-                
+                funcPopulateProductGrid();
+            }
+        }
+
+        private void funcPopulateProductGrid()
+        {
+            DataTable dt = new DataTable();
+            objBOProductDetails.searchBy = comboSearchBy.Text;
+            objBOProductDetails.searchTerm = txtSearchText.Text;
+            dt = objBALProductDetails.funcPopulateProductGrid(objBOProductDetails);
+
+            //Failed Scenario
+            if (dt.Columns[0].ColumnName == "error")
+            {
+                string errorCode = Convert.ToString(dt.Rows[0]["error"]);
+                MessageBox.Show("Unable Retreive Product Details", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                dataGridProdDetails.DataSource = dt;
             }
         }
 
@@ -208,6 +227,59 @@ namespace medicalInventory
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            bool retVal = objBALProductDetails.funcUpdateProductMaster();
+            if (retVal == false)
+            {
+                MessageBox.Show("Unable to Save Product Details to Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (retVal == true)
+            {
+                MessageBox.Show("Product Details Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            foreach (DataGridViewRow dataGridRow in dataGridProdDetails.SelectedRows)
+            {
+                if (dataGridRow.Selected)
+                    count++;
+            }
+            if (count == 0)
+            {
+                MessageBox.Show("Please select product(s) to delete", "Product not selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DialogResult choice = MessageBox.Show("Selected Product: " + count + Environment.NewLine + "Do you really want to delete '" + count + "' product(s):", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (choice == DialogResult.Yes)
+            {
+                //foreach (DataGridViewCell oneCell in dataGridProdDetails.SelectedCells)
+                foreach (DataGridViewRow dataGridRow in dataGridProdDetails.SelectedRows)
+                {
+                    if (dataGridRow.Selected)
+                        dataGridProdDetails.Rows.RemoveAt(dataGridRow.Index);
+                        //dataGridProdDetails.Rows.RemoveAt(oneCell.RowIndex);
+                }
+                bool retVal = objBALProductDetails.funcUpdateProductMaster();
+                if (retVal == false)
+                {
+                    MessageBox.Show("Unable to delete product details from the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (retVal == true)
+                {
+                    MessageBox.Show("Product Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            funcPopulateProductGrid();
         }
 
 

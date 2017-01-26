@@ -15,6 +15,8 @@ namespace BO
         public string unit { get; set; }
         public string schedule { get; set; }
         public string contents { get; set; }
+        public string searchBy { get; set; }
+        public string searchTerm { get; set; }
 
     }
 }

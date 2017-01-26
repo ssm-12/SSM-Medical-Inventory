@@ -13,7 +13,9 @@ namespace DAL
     public class DALProductDetails
     {
         DB_Utility objDB_Utility;
-        
+        SqlDataAdapter da;
+        SqlCommand cmd;
+        DataSet ds;
         public DataTable funcPopulateBrand()
         {
             DataTable dt = new DataTable();
@@ -22,7 +24,7 @@ namespace DAL
                 //Initialization
                 objDB_Utility = new DB_Utility();
                 SqlConnection con = objDB_Utility.funcOpenConnection();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM brand", con);
+                cmd = new SqlCommand("SELECT * FROM brand", con);
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 return dt;
@@ -130,6 +132,63 @@ namespace DAL
                 objDB_Utility.funcCloseConnection();
             }
         }
-         
+
+
+        public DataTable funcPopulateProductGrid(string condition)
+        {
+            try
+            {
+                //Initialization
+                objDB_Utility = new DB_Utility();
+                SqlConnection con = objDB_Utility.funcOpenConnection();
+                string strCmd = "SELECT product_id as \"Product ID\", product_name as \"Product Name\", company as \"Brand/Company\", ";
+                strCmd += "contents as \"Contents\", Generic as \"Generic Name\", packing as \"Packing\", ";
+                strCmd += "unit as \"Unit\", schedule as \"Schedule\", ";
+                strCmd += "modified_date_time as \"Date\" ";
+                strCmd += "FROM product_master " + condition;
+                cmd = new SqlCommand(strCmd, con);
+                da = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                da.Fill(ds, "Product_Details");
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                string filePath = @"..\ErrorLog.log";
+
+                using (System.IO.StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Error Code : 00005" + Environment.NewLine + "Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+
+                //Send datatable with error code
+                DataTable dt = new DataTable();
+                DataColumn dc1 = new DataColumn("error");
+                dt.Columns.Add(dc1);
+                dt.Rows.Add("00005");
+                return dt;
+
+            }
+            finally
+            {
+                objDB_Utility.funcCloseConnection();
+            }
+        }
+
+        public bool funcUpdateProductMaster()
+        {
+            try
+            {
+                SqlCommandBuilder cmb1 = new SqlCommandBuilder(da);
+                da.Update(ds, "Product_Details");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }
