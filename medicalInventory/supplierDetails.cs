@@ -17,9 +17,23 @@ namespace medicalInventory
     {
         private BALSuppDetails objBALSuppDetails = new BALSuppDetails();
         private BOSuppDetails objBOSuppDetails = new BOSuppDetails();
-        public supplierDetails()
+        public supplierDetails(int tabNo)
         {
             InitializeComponent();
+            funcOpenTabPage(tabNo);
+        }
+
+        private void funcOpenTabPage(int pageNo)
+        {
+            if (pageNo == 1)
+            {
+                tabControl1.SelectedTab = tabPage1;
+                txtName.Select();
+            }
+            else if (pageNo == 2)
+            {
+                tabControl1.SelectedTab = tabPage2;
+            }
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -113,8 +127,108 @@ namespace medicalInventory
 
         private void supplierDetails_Load(object sender, EventArgs e)
         {
-            
+            funcInitializeIndividualTab();
 
+        }
+
+        private void funcInitializeIndividualTab()
+        {
+            //Add Supplier Tab - Initializations goes here
+            if (tabControl1.SelectedIndex == 0)
+            {
+
+            }
+            //Modify Supplier Tab - Initializations goes here
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                funcPopulateSupplierGrid();
+            }
+        }
+
+        private void funcPopulateSupplierGrid()
+        {
+            DataTable dt = new DataTable();
+            objBOSuppDetails.searchBy = comboSearchBy.Text;
+            objBOSuppDetails.searchTerm = txtSearchText.Text;
+            dt = objBALSuppDetails.funcPopulateSupplierGrid(objBOSuppDetails);
+
+            //Failed Scenario
+            if (dt.Columns[0].ColumnName == "error")
+            {
+                string errorCode = Convert.ToString(dt.Rows[0]["error"]);
+                MessageBox.Show("Unable Retreive Supplier Details", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                dataGridSupDetails.DataSource = dt;
+            }
+        }
+
+        private void tabControl1_IndexChange(object sender, EventArgs e)
+        {
+            funcInitializeIndividualTab();
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            funcPopulateSupplierGrid();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DialogResult choice = MessageBox.Show("Do you really want to Save Changes? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (choice == DialogResult.Yes)
+            {
+                bool retVal = objBALSuppDetails.funcUpdateSupplierMaster();
+                if (retVal == false)
+                {
+                    MessageBox.Show("Unable to Save Supplier Details to Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (retVal == true)
+                {
+                    MessageBox.Show("Supplier Details Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            foreach (DataGridViewRow dataGridRow in dataGridSupDetails.SelectedRows)
+            {
+                if (dataGridRow.Selected)
+                    count++;
+            }
+            if (count == 0)
+            {
+                MessageBox.Show("Please select Supplier Record(s) to delete", "Record(s) not selected", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DialogResult choice = MessageBox.Show("Record Selected: " + count + Environment.NewLine + "Do you really want to delete '" + count + "' Record(s):", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (choice == DialogResult.Yes)
+            {
+                //foreach (DataGridViewCell oneCell in dataGridProdDetails.SelectedCells)
+                foreach (DataGridViewRow dataGridRow in dataGridSupDetails.SelectedRows)
+                {
+                    if (dataGridRow.Selected)
+                        dataGridSupDetails.Rows.RemoveAt(dataGridRow.Index);
+                    //dataGridProdDetails.Rows.RemoveAt(oneCell.RowIndex);
+                }
+                bool retVal = objBALSuppDetails.funcUpdateSupplierMaster();
+                if (retVal == false)
+                {
+                    MessageBox.Show("Unable to delete Supplier Record from the database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (retVal == true)
+                {
+                    MessageBox.Show("Supplier Record Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

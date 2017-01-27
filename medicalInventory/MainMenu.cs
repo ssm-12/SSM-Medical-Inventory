@@ -59,16 +59,7 @@ namespace medicalInventory
 
         private void btnSuppDetails_Click(object sender, EventArgs e)
         {
-            if (!funcIsFormOpen("supplierDetails"))
-            {
-                supplierDetails frmSupDetails = new supplierDetails();
-                frmSupDetails.MdiParent = this;
-                frmSupDetails.Show();
-            }
-            else
-            {
-                funcBringToFront("supplierDetails");
-            }
+            contextMenuSupplierL.Show(btnSuppDetails, new Point(btnSuppDetails.Width, 0));
         }
 
         //Check if the form is already open
@@ -102,16 +93,58 @@ namespace medicalInventory
 
         private void toolStripAddProduct_Click(object sender, EventArgs e)
         {
-            productDetails frmProdDetails = new productDetails(1);//Sent value denotes which tab to open
-            frmProdDetails.MdiParent = this;
-            frmProdDetails.Show();
+            if (!funcIsFormOpen("productDetails"))
+            {
+                productDetails frmProdDetails = new productDetails(1);//Sent value denotes which tab to open
+                frmProdDetails.MdiParent = this;
+                frmProdDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("productDetails");
+            }
         }
 
         private void toolStripModifyProduct_Click(object sender, EventArgs e)
         {
-            productDetails frmProdDetails = new productDetails(2);//Sent value denotes which tab to open
-            frmProdDetails.MdiParent = this;
-            frmProdDetails.Show();
+            if (!funcIsFormOpen("productDetails"))
+            {
+                productDetails frmProdDetails = new productDetails(2);//Sent value denotes which tab to open
+                frmProdDetails.MdiParent = this;
+                frmProdDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("productDetails");
+            }
+        }
+
+        private void addNewSupplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("supplierDetails"))
+            {
+                supplierDetails frmSupDetails = new supplierDetails(1);
+                frmSupDetails.MdiParent = this;
+                frmSupDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("supplierDetails");
+            }
+        }
+
+        private void viewModifySupplierDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("supplierDetails"))
+            {
+                supplierDetails frmSupDetails = new supplierDetails(2);
+                frmSupDetails.MdiParent = this;
+                frmSupDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("supplierDetails");
+            }
         }
     }
 }

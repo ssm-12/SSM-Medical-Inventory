@@ -187,6 +187,14 @@ namespace DAL
             }
             catch (Exception ex)
             {
+                string filePath = @"..\ErrorLog.log";
+
+                using (System.IO.StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Error Code : 00007" + Environment.NewLine + "Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
                 return false;
             }
         }

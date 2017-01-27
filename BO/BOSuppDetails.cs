@@ -16,5 +16,7 @@ namespace BO
         public string dlNo { get; set; }
         public string tinNo { get; set; }
         public string emailId { get; set; }
+        public string searchBy { get; set; }
+        public string searchTerm { get; set; }
     }
 }

@@ -49,10 +49,14 @@
             this.contextMenuOnProductBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripAddProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripModifyProduct = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuSupplierL = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.addNewSupplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewModifySupplierDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuOnProductBtn.SuspendLayout();
+            this.contextMenuSupplierL.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -128,7 +132,7 @@
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(182, 35);
             this.btnProduct.TabIndex = 1;
-            this.btnProduct.Text = "Product";
+            this.btnProduct.Text = "Product Master";
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_click);
             // 
@@ -171,7 +175,7 @@
             this.btnSuppDetails.Name = "btnSuppDetails";
             this.btnSuppDetails.Size = new System.Drawing.Size(182, 35);
             this.btnSuppDetails.TabIndex = 6;
-            this.btnSuppDetails.Text = "Supplier Details";
+            this.btnSuppDetails.Text = "Supplier Ledger";
             this.btnSuppDetails.UseVisualStyleBackColor = true;
             this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
             // 
@@ -264,6 +268,28 @@
             this.toolStripModifyProduct.Text = "Modify Existing Product";
             this.toolStripModifyProduct.Click += new System.EventHandler(this.toolStripModifyProduct_Click);
             // 
+            // contextMenuSupplierL
+            // 
+            this.contextMenuSupplierL.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewSupplierToolStripMenuItem,
+            this.viewModifySupplierDetailsToolStripMenuItem});
+            this.contextMenuSupplierL.Name = "contextMenuSupplierL";
+            this.contextMenuSupplierL.Size = new System.Drawing.Size(227, 70);
+            // 
+            // addNewSupplierToolStripMenuItem
+            // 
+            this.addNewSupplierToolStripMenuItem.Name = "addNewSupplierToolStripMenuItem";
+            this.addNewSupplierToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.addNewSupplierToolStripMenuItem.Text = "Add New Supplier";
+            this.addNewSupplierToolStripMenuItem.Click += new System.EventHandler(this.addNewSupplierToolStripMenuItem_Click);
+            // 
+            // viewModifySupplierDetailsToolStripMenuItem
+            // 
+            this.viewModifySupplierDetailsToolStripMenuItem.Name = "viewModifySupplierDetailsToolStripMenuItem";
+            this.viewModifySupplierDetailsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
+            this.viewModifySupplierDetailsToolStripMenuItem.Text = "View/Modify Supplier Details";
+            this.viewModifySupplierDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewModifySupplierDetailsToolStripMenuItem_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,6 +309,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.contextMenuOnProductBtn.ResumeLayout(false);
+            this.contextMenuSupplierL.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,5 +337,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuOnProductBtn;
         private System.Windows.Forms.ToolStripMenuItem toolStripAddProduct;
         private System.Windows.Forms.ToolStripMenuItem toolStripModifyProduct;
+        private System.Windows.Forms.ContextMenuStrip contextMenuSupplierL;
+        private System.Windows.Forms.ToolStripMenuItem addNewSupplierToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewModifySupplierDetailsToolStripMenuItem;
     }
 }

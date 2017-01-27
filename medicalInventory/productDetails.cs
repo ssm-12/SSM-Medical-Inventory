@@ -231,14 +231,18 @@ namespace medicalInventory
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            bool retVal = objBALProductDetails.funcUpdateProductMaster();
-            if (retVal == false)
+            DialogResult choice = MessageBox.Show("Do you really want to Save Changes? ", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (choice == DialogResult.Yes)
             {
-                MessageBox.Show("Unable to Save Product Details to Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (retVal == true)
-            {
-                MessageBox.Show("Product Details Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool retVal = objBALProductDetails.funcUpdateProductMaster();
+                if (retVal == false)
+                {
+                    MessageBox.Show("Unable to Save Product Details to Database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                if (retVal == true)
+                {
+                    MessageBox.Show("Product Details Updated Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
 

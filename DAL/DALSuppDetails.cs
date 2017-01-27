@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 using BO;
 using System.Data.SqlClient;
 using System.IO;
+using System.Data;
 
 namespace DAL
 {
     public class DALSuppDetails
     {
         DB_Utility objDB_Utility;
+        SqlCommand cmd;
+        SqlDataAdapter da;
+        DataSet ds;
         public bool funcInsertSupDetails(BOSuppDetails objBOSupDetails)
         {
             try
@@ -51,6 +55,71 @@ namespace DAL
             finally
             {
                 objDB_Utility.funcCloseConnection();
+            }
+        }
+
+        public DataTable funcPopulateSupplierGrid(string condition)
+        {
+            try
+            {
+                //Initialization
+                objDB_Utility = new DB_Utility();
+                SqlConnection con = objDB_Utility.funcOpenConnection();
+                string strCmd = "SELECT supp_id as \"Supplier ID\", supp_name as \"Supplier Name\", DL_no as \"DL Number\", ";
+                strCmd += "TIN_no as \"TIN Number\", address_line1 as \"Address Line1\", address_line2 as \"Address Line2\", ";
+                strCmd += "contact_no as \"Contact\", email as \"Email ID\", ";
+                strCmd += "modified_date_time as \"Date\" ";
+                strCmd += "FROM supplier_master " + condition;
+                cmd = new SqlCommand(strCmd, con);
+                da = new SqlDataAdapter(cmd);
+                ds = new DataSet();
+                da.Fill(ds, "Supplier_Details");
+                return ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                string filePath = @"..\ErrorLog.log";
+
+                using (System.IO.StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Error Code : 00006" + Environment.NewLine + "Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+
+                //Send datatable with error code
+                DataTable dt = new DataTable();
+                DataColumn dc1 = new DataColumn("error");
+                dt.Columns.Add(dc1);
+                dt.Rows.Add("00006");
+                return dt;
+
+            }
+            finally
+            {
+                objDB_Utility.funcCloseConnection();
+            }
+        }
+
+        public bool funcUpdateSupplierMaster()
+        {
+            try
+            {
+                SqlCommandBuilder cmb1 = new SqlCommandBuilder(da);
+                da.Update(ds, "Supplier_Details");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                string filePath = @"..\ErrorLog.log";
+
+                using (System.IO.StreamWriter writer = new StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("Error Code : 00008" + Environment.NewLine + "Message :" + ex.Message + "<br/>" + Environment.NewLine + "StackTrace :" + ex.StackTrace +
+                       "" + Environment.NewLine + "Date :" + DateTime.Now.ToString());
+                    writer.WriteLine(Environment.NewLine + "-----------------------------------------------------------------------------" + Environment.NewLine);
+                }
+                return false;
             }
         }
     }
