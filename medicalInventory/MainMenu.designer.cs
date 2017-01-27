@@ -38,7 +38,7 @@
             this.btnRetail = new System.Windows.Forms.Button();
             this.btnSupply = new System.Windows.Forms.Button();
             this.btnSuppDetails = new System.Windows.Forms.Button();
-            this.btnAccount = new System.Windows.Forms.Button();
+            this.btnPurchase = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -52,11 +52,15 @@
             this.contextMenuSupplierL = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addNewSupplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewModifySupplierDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuPurchaseBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewBillDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuOnProductBtn.SuspendLayout();
             this.contextMenuSupplierL.SuspendLayout();
+            this.contextMenuPurchaseBtn.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -87,7 +91,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnRetail, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.btnSupply, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnSuppDetails, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.btnAccount, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.btnPurchase, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnReturn, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -179,16 +183,16 @@
             this.btnSuppDetails.UseVisualStyleBackColor = true;
             this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
             // 
-            // btnAccount
+            // btnPurchase
             // 
-            this.btnAccount.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAccount.Location = new System.Drawing.Point(3, 167);
-            this.btnAccount.Name = "btnAccount";
-            this.btnAccount.Size = new System.Drawing.Size(182, 35);
-            this.btnAccount.TabIndex = 4;
-            this.btnAccount.Text = "Purchase";
-            this.btnAccount.UseVisualStyleBackColor = true;
-            this.btnAccount.Click += new System.EventHandler(this.btnAccount_Click);
+            this.btnPurchase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPurchase.Location = new System.Drawing.Point(3, 167);
+            this.btnPurchase.Name = "btnPurchase";
+            this.btnPurchase.Size = new System.Drawing.Size(182, 35);
+            this.btnPurchase.TabIndex = 4;
+            this.btnPurchase.Text = "Purchase";
+            this.btnPurchase.UseVisualStyleBackColor = true;
+            this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
             // btnReturn
             // 
@@ -274,7 +278,7 @@
             this.addNewSupplierToolStripMenuItem,
             this.viewModifySupplierDetailsToolStripMenuItem});
             this.contextMenuSupplierL.Name = "contextMenuSupplierL";
-            this.contextMenuSupplierL.Size = new System.Drawing.Size(227, 70);
+            this.contextMenuSupplierL.Size = new System.Drawing.Size(227, 48);
             // 
             // addNewSupplierToolStripMenuItem
             // 
@@ -289,6 +293,27 @@
             this.viewModifySupplierDetailsToolStripMenuItem.Size = new System.Drawing.Size(226, 22);
             this.viewModifySupplierDetailsToolStripMenuItem.Text = "View/Modify Supplier Details";
             this.viewModifySupplierDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewModifySupplierDetailsToolStripMenuItem_Click);
+            // 
+            // contextMenuPurchaseBtn
+            // 
+            this.contextMenuPurchaseBtn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newBillToolStripMenuItem,
+            this.viewBillDetailsToolStripMenuItem});
+            this.contextMenuPurchaseBtn.Name = "contextMenuPurchaseBtn";
+            this.contextMenuPurchaseBtn.Size = new System.Drawing.Size(157, 70);
+            // 
+            // newBillToolStripMenuItem
+            // 
+            this.newBillToolStripMenuItem.Name = "newBillToolStripMenuItem";
+            this.newBillToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.newBillToolStripMenuItem.Text = "New Bill";
+            this.newBillToolStripMenuItem.Click += new System.EventHandler(this.newBillToolStripMenuItem_Click);
+            // 
+            // viewBillDetailsToolStripMenuItem
+            // 
+            this.viewBillDetailsToolStripMenuItem.Name = "viewBillDetailsToolStripMenuItem";
+            this.viewBillDetailsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.viewBillDetailsToolStripMenuItem.Text = "View Bill Details";
             // 
             // MainMenu
             // 
@@ -310,6 +335,7 @@
             this.statusStrip1.PerformLayout();
             this.contextMenuOnProductBtn.ResumeLayout(false);
             this.contextMenuSupplierL.ResumeLayout(false);
+            this.contextMenuPurchaseBtn.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,7 +347,7 @@
         private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnRetail;
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Button btnAccount;
+        private System.Windows.Forms.Button btnPurchase;
         private System.Windows.Forms.Button btnSupply;
         private System.Windows.Forms.Button btn3;
         private System.Windows.Forms.Button btnBuyerDetails;
@@ -340,5 +366,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuSupplierL;
         private System.Windows.Forms.ToolStripMenuItem addNewSupplierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewModifySupplierDetailsToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuPurchaseBtn;
+        private System.Windows.Forms.ToolStripMenuItem newBillToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewBillDetailsToolStripMenuItem;
     }
 }
