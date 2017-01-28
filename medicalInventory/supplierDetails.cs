@@ -48,10 +48,19 @@ namespace medicalInventory
                 objBOSuppDetails.tinNo = txtTIN.Text;
                 objBOSuppDetails.emailId = txtEmail.Text;
 
+                if (objBALSuppDetails.funcCheckDuplicateSup(objBOSuppDetails) > 0)
+                {
+                    MessageBox.Show("Duplicate entry of the Supplier. Please check existing supplier list.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    funcClearAllFields();
+                    txtName.Select();
+                    return;
+                }
+
                 if (objBALSuppDetails.funcInsertSupDetails(objBOSuppDetails) == true)
                 {
                     MessageBox.Show("Supplier Information Saved Successfully", "Data Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     funcClearAllFields();
+                    txtName.Select();
                     //TO DO: Clear all the text fields, set focus to name
                 }
                 else

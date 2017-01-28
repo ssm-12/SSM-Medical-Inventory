@@ -56,6 +56,12 @@ namespace BAL
             bool retVal = objDALSuppDetails.funcUpdateSupplierMaster();
             return retVal;
         }
+
+        public int funcCheckDuplicateSup(BOSuppDetails objBOSupDetails)
+        {
+            int retVal = objDALSuppDetails.funcCheckDuplicateSup(objBOSupDetails);
+            return retVal;
+        }
     }
 
 

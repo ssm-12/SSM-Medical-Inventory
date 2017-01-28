@@ -58,6 +58,17 @@ namespace DAL
             }
         }
 
+        public int funcCheckDuplicateSup(BOSuppDetails objSupDetails)
+        {
+            objDB_Utility = new DB_Utility();
+            SqlConnection con = objDB_Utility.funcOpenConnection();
+            SqlCommand cmd = new SqlCommand("SELECT count(*) FROM supplier_master WHERE UPPER(supp_name)=UPPER(@supp_name)", con);
+            cmd.Parameters.AddWithValue("@supp_name", objSupDetails.suppName);
+            int retVal = Convert.ToInt32(cmd.ExecuteScalar());
+            return retVal;
+
+        }
+
         public DataTable funcPopulateSupplierGrid(string condition)
         {
             try
