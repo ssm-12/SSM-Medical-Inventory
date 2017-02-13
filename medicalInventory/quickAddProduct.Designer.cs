@@ -1,6 +1,6 @@
 ﻿namespace medicalInventory
 {
-    partial class purchase
+    partial class quickAddProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,15 @@
         {
             this.SuspendLayout();
             // 
-            // purchase
+            // quickAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 322);
-            this.Name = "purchase";
-            this.Text = "purchase";
+            this.ClientSize = new System.Drawing.Size(907, 468);
+            this.Name = "quickAddProduct";
+            this.Text = "quickAddProduct";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.quickAddProduct_Load);
             this.ResumeLayout(false);
 
         }

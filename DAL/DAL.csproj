@@ -57,7 +57,9 @@
     <Compile Include="DALBuyerDetails.cs" />
     <Compile Include="DALlogin.cs" />
     <Compile Include="DALProductDetails.cs" />
+    <Compile Include="DALPurchaseBill.cs" />
     <Compile Include="DALSuppDetails.cs" />
+    <Compile Include="DALUpdateProductPacking.cs" />
     <Compile Include="DB_Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

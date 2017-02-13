@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace medicalInventory
 {
-    public partial class purchase : Form
+    public partial class quickAddProduct : Form
     {
-        public purchase()
+        public quickAddProduct()
         {
             InitializeComponent();
         }
+
+        private void quickAddProduct_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

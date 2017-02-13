@@ -30,6 +30,11 @@ namespace medicalInventory
             objBOlogin.password = txtUserName.Text;
 
             val=objBAlogin.funcAuthenticate(objBOlogin);
+            if (val == -1)
+            {
+                MessageBox.Show("Unable to connect Database", "Connectivity Issue", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if(val!=1)
             {
                 MessageBox.Show("Invalid Login Credentials!!! Please try again");

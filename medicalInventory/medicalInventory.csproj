@@ -70,23 +70,29 @@
     <Compile Include="mainMenu.designer.cs">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="pleaseWaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pleaseWaitForm.Designer.cs">
+      <DependentUpon>pleaseWaitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="productDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="productDetails.Designer.cs">
       <DependentUpon>productDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="purchase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="purchase.Designer.cs">
-      <DependentUpon>purchase.cs</DependentUpon>
-    </Compile>
     <Compile Include="purchaseBill.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="purchaseBill.Designer.cs">
       <DependentUpon>purchaseBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="quickAddProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="quickAddProduct.Designer.cs">
+      <DependentUpon>quickAddProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="stock.cs">
       <SubType>Form</SubType>
@@ -99,6 +105,12 @@
     </Compile>
     <Compile Include="supplierDetails.Designer.cs">
       <DependentUpon>supplierDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateProductPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateProductPacking.Designer.cs">
+      <DependentUpon>updateProductPacking.cs</DependentUpon>
     </Compile>
     <Compile Include="welcomeSplash.cs">
       <SubType>Form</SubType>
@@ -116,20 +128,26 @@
     <EmbeddedResource Include="mainMenu.resx">
       <DependentUpon>mainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="pleaseWaitForm.resx">
+      <DependentUpon>pleaseWaitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="productDetails.resx">
       <DependentUpon>productDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="purchase.resx">
-      <DependentUpon>purchase.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="purchaseBill.resx">
       <DependentUpon>purchaseBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="quickAddProduct.resx">
+      <DependentUpon>quickAddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="stock.resx">
       <DependentUpon>stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="supplierDetails.resx">
       <DependentUpon>supplierDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateProductPacking.resx">
+      <DependentUpon>updateProductPacking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="welcomeSplash.resx">
       <DependentUpon>welcomeSplash.cs</DependentUpon>

@@ -26,7 +26,7 @@ namespace DAL
            catch
            {
                //exception handling for login
-               throw;
+               return -1;
            }
            finally
            {

@@ -151,9 +151,13 @@ namespace medicalInventory
         {
             if (!funcIsFormOpen("purchaseBill"))
             {
+                pleaseWaitForm frmPleaseWait = new pleaseWaitForm();
+                frmPleaseWait.Show();
+                Application.DoEvents();
                 purchaseBill frmSupDetails = new purchaseBill();
                 frmSupDetails.MdiParent = this;
                 frmSupDetails.Show();
+                frmPleaseWait.Close();
             }
             else
             {
