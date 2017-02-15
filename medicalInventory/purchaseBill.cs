@@ -18,7 +18,6 @@ namespace medicalInventory
         BOPurchaseBill objBOPurchaseBill = new BOPurchaseBill();
         BALPurchaseBill objBALPurchaseBill = new BALPurchaseBill();
         static string local_packing;
-        static decimal total_MRP;
 
         public purchaseBill()
         {
@@ -158,9 +157,10 @@ namespace medicalInventory
             string mfgDate="";
             string expiry = txtExpMonth.Text + "/" + txtExpYear.Text;
             decimal cost = Convert.ToDecimal(txtCostPerUnit.Text);
-            decimal mrp = Convert.ToDecimal(txtMRP.Text);
+            cost = Math.Round(cost, 2);
+            decimal mrp = Math.Round((Convert.ToDecimal(txtMRP.Text)),2);
             int stripQnt,tabQnt;
-            decimal discount, totalCost;
+            decimal discount, totalCost, total_MRP;
             int packingQnt = Convert.ToInt32(local_packing);
 
             if (txtMfgMonth.Text != "")
@@ -184,15 +184,17 @@ namespace medicalInventory
             }
             else{
                 discount = Convert.ToDecimal(txtDiscount.Text);
+                discount = Math.Round(discount, 2);
             }
 
-            total_MRP += (stripQnt * mrp) + (mrp / packingQnt) * tabQnt;
+            total_MRP = (stripQnt * mrp) + (mrp / packingQnt) * tabQnt;
+            total_MRP = Math.Round(total_MRP, 2);
             totalCost = (stripQnt*cost)+(cost/packingQnt)*tabQnt;
             totalCost = Math.Round(totalCost, 2);
 
 
 
-            dataGridProductList.Rows.Add(comboProduct.SelectedValue, comboProduct.Text, txtBatch.Text, txtStrip.Text, txtTab.Text, mfgDate, expiry, txtMRP.Text, txtDiscount.Text, txtCostPerUnit.Text, totalCost.ToString(), txtRackNo.Text);
+            dataGridProductList.Rows.Add(comboProduct.SelectedValue, comboProduct.Text, txtBatch.Text, txtStrip.Text, txtTab.Text, mfgDate, expiry, txtMRP.Text, txtDiscount.Text, txtCostPerUnit.Text, totalCost.ToString(),total_MRP.ToString(), txtRackNo.Text);
             
         }
 
@@ -282,10 +284,16 @@ namespace medicalInventory
                     txtMfgMonth.Select();
                     return false;
                 }
+                else if (txtMfgMonth.Text.Length < 2)
+                {
+                    MessageBox.Show("Please enter mfg month in MM format", "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtMfgMonth.Select();
+                    return false;
+                }
                 else
                 {
                     int mfgMonth = Convert.ToInt32(txtMfgMonth.Text);
-                    if ( mfgMonth > 12 || mfgMonth < 1)
+                    if (mfgMonth > 12 || mfgMonth < 1)
                     {
                         MessageBox.Show("Mfg Month should be between 1-12", "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtMfgMonth.Select();
@@ -313,6 +321,12 @@ namespace medicalInventory
             if (!Regex.Match(txtExpMonth.Text, @"^[0-9]+$").Success)
             {
                 MessageBox.Show("Expiry Month should be numeric", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtExpMonth.Select();
+                return false;
+            }
+            if (txtExpMonth.Text.Length < 2)
+            {
+                MessageBox.Show("Please enter Expiry month in MM format", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtExpMonth.Select();
                 return false;
             }
@@ -400,16 +414,17 @@ namespace medicalInventory
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             if (funcValidationOnCalculate() == true)
-            { 
-                decimal totalCost,dueAmount,amountPaid;
+            {
+                decimal totalCost, dueAmount, amountPaid, totalMRP;
                 totalCost = 0;
                 dueAmount = 0;
+                totalMRP = 0;
                 amountPaid = Convert.ToDecimal(txtAmountPaid.Text);
                 amountPaid = Math.Round(amountPaid, 2);
                 //Calculate total mrp, cost and due amount
                 foreach (DataGridViewRow dataGridRow in dataGridProductList.Rows)
                 {
-                    //totalMRP += Convert.ToDecimal(dataGridProductList.Rows[dataGridRow.Index].Cells["mrp"].Value);
+                    totalMRP += Convert.ToDecimal(dataGridProductList.Rows[dataGridRow.Index].Cells["totalMRP"].Value);
                     totalCost += Convert.ToDecimal(dataGridProductList.Rows[dataGridRow.Index].Cells["total_cost"].Value);
                 }
                 totalCost = Math.Round(totalCost,2);
@@ -419,7 +434,7 @@ namespace medicalInventory
                 lblCost.Text = totalCost.ToString("F");
                 lblDueAmount.Text = dueAmount.ToString("F");
                 lblAmountPaid.Text = amountPaid.ToString("F");
-                lblMRP.Text = total_MRP.ToString("F");
+                lblMRP.Text = totalMRP.ToString("F");
             }
         }
         private bool funcValidationOnCalculate()
@@ -490,9 +505,25 @@ namespace medicalInventory
                  //Update or Insert into inStock table
                  //Insert into cash_transaction
                  funcSaveInvoiceDetails();
+                 cleanUpOnSubmission();
+                 comboSupplier.Select();
              }
 
             
+        }
+
+        private void cleanUpOnSubmission()
+        {
+            comboSupplier.SelectedIndex = 0;
+            txtInvoice.Text = "";
+            dateTimePicker1.Value = DateTime.Today;
+            txtAmountPaid.Text = "";
+            lblMRP.Text = "0.00";
+            lblCost.Text = "0.00";
+            lblAmountPaid.Text = "0.00";
+            lblDueAmount.Text = "0.00";
+            dataGridProductList.Rows.Clear();
+            dataGridProductList.Refresh();
         }
 
         private void funcSaveInvoiceDetails()
@@ -518,12 +549,16 @@ namespace medicalInventory
                 new DataColumn("mrp_ps",typeof(decimal)),
                 new DataColumn("discount",typeof(decimal)),
                 new DataColumn("cost_per_unit",typeof(decimal)),
-                new DataColumn("total_cost",typeof(decimal))
+                new DataColumn("total_cost",typeof(decimal)),
+                new DataColumn("mfg_date",typeof(DateTime)),
+                new DataColumn("expiry", typeof(DateTime)),
+                new DataColumn("rack_no", typeof(string))
             }
             );
-            string tmpBatch;
+            string tmpBatch,tmpYear,tmpMonth,tmpDate,tmpMfg,tmpExp,tmpRackNo;
             int tmpProductID,tmpWhole,tmpLoose;
             decimal tmpMrp, tmpDiscount, tmpCost, tmpTotalCost;
+            DateTime? tmpMfgDate, tmpExpDate;
             //foreach (DataGridViewCell oneCell in dataGridProdDetails.SelectedCells)
             foreach (DataGridViewRow dataGridRow in dataGridProductList.Rows)
             {
@@ -544,7 +579,30 @@ namespace medicalInventory
                     tmpDiscount = 0;
                 tmpCost = Convert.ToDecimal(dataGridRow.Cells[9].Value);
                 tmpTotalCost = Convert.ToDecimal(dataGridRow.Cells[10].Value);
-                dt_invoice_details.Rows.Add(tmpProductID, tmpBatch, tmpWhole, tmpLoose, tmpMrp, tmpDiscount, tmpCost, tmpTotalCost);
+                tmpMfg = Convert.ToString(dataGridRow.Cells[5].Value);
+                if (tmpMfg == "")
+                {
+                    //tmpMfgDate = DateTime.ParseExact("01/01/1800", @"M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    tmpMfgDate = null;
+                }
+                else
+                { 
+                    tmpMonth = tmpMfg.Substring(0, 2);
+                    tmpYear = tmpMfg.Substring(3, 4);
+                    tmpDate = Convert.ToString(DateTime.DaysInMonth(Convert.ToInt32(tmpYear), Convert.ToInt32(tmpMonth)));
+                    tmpMfg = tmpMonth + "/" + tmpDate + "/" + tmpYear;
+                    tmpMfgDate = DateTime.ParseExact(tmpMfg, @"M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                
+                tmpExp = Convert.ToString(dataGridRow.Cells[6].Value);
+                tmpMonth = tmpExp.Substring(0, 2);
+                tmpYear = tmpExp.Substring(3, 4);
+                tmpDate = Convert.ToString(DateTime.DaysInMonth(Convert.ToInt32(tmpYear), Convert.ToInt32(tmpMonth)));
+                tmpExp = tmpMonth + "/" + tmpDate + "/" + tmpYear;
+                tmpExpDate = DateTime.ParseExact(tmpExp, @"M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                tmpRackNo = Convert.ToString(dataGridRow.Cells[12].Value);
+
+                dt_invoice_details.Rows.Add(tmpProductID, tmpBatch, tmpWhole, tmpLoose, tmpMrp, tmpDiscount, tmpCost, tmpTotalCost, tmpMfgDate, tmpExpDate, tmpRackNo);
             }
             string retMsg = objBALPurchaseBill.funcSaveInvoiceDetails(objBOPurchaseBill,dt_invoice_details);
             if (retMsg == "success")

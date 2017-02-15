@@ -88,6 +88,7 @@
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total_cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalMRP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rack_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.btnSave = new System.Windows.Forms.Button();
@@ -726,7 +727,6 @@
             // dataGridProductList
             // 
             this.dataGridProductList.AllowUserToAddRows = false;
-            this.dataGridProductList.AllowUserToDeleteRows = false;
             this.dataGridProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -741,11 +741,12 @@
             this.discount,
             this.cost,
             this.total_cost,
+            this.totalMRP,
             this.rack_no});
             this.dataGridProductList.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridProductList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridProductList.Location = new System.Drawing.Point(0, 396);
             this.dataGridProductList.Name = "dataGridProductList";
-            this.dataGridProductList.ReadOnly = true;
             this.dataGridProductList.Size = new System.Drawing.Size(984, 286);
             this.dataGridProductList.TabIndex = 0;
             // 
@@ -814,6 +815,12 @@
             this.total_cost.HeaderText = "Total Cost";
             this.total_cost.Name = "total_cost";
             this.total_cost.ReadOnly = true;
+            // 
+            // totalMRP
+            // 
+            this.totalMRP.HeaderText = "Total MRP";
+            this.totalMRP.Name = "totalMRP";
+            this.totalMRP.ReadOnly = true;
             // 
             // rack_no
             // 
@@ -973,6 +980,8 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label lblDueAmount;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label lblMRP;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn product_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn batch_no;
@@ -984,8 +993,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cost;
         private System.Windows.Forms.DataGridViewTextBoxColumn total_cost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalMRP;
         private System.Windows.Forms.DataGridViewTextBoxColumn rack_no;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label lblMRP;
     }
 }
