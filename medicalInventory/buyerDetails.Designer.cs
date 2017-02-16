@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lblMsg = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.lblBuyerName = new System.Windows.Forms.Label();
@@ -52,27 +51,24 @@
             this.txtBuyerTIN = new System.Windows.Forms.TextBox();
             this.txtBuyerEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.grdBuyerDetails = new System.Windows.Forms.DataGridView();
-            this.custidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dLnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tINnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressline1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressline2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactnoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customermasterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dB_SSM_Medical_InventoryDataSet = new medicalInventory.DB_SSM_Medical_InventoryDataSet();
-            this.label2 = new System.Windows.Forms.Label();
-            this.customer_masterTableAdapter = new medicalInventory.DB_SSM_Medical_InventoryDataSetTableAdapters.customer_masterTableAdapter();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboSearchBy = new System.Windows.Forms.ComboBox();
+            this.txtSearchText = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dataGridSupDetails = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBuyerDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customermasterBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupDetails)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -81,7 +77,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.ItemSize = new System.Drawing.Size(500, 50);
+            this.tabControl1.ItemSize = new System.Drawing.Size(150, 50);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -93,12 +89,13 @@
             this.tabPage1.Controls.Add(this.lblMsg);
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1014, 374);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Add Buyer";
+            this.tabPage1.Text = "        Add Buyer       ";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // lblMsg
@@ -106,7 +103,7 @@
             this.lblMsg.AutoSize = true;
             this.lblMsg.Location = new System.Drawing.Point(228, 249);
             this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(11, 13);
+            this.lblMsg.Size = new System.Drawing.Size(14, 16);
             this.lblMsg.TabIndex = 4;
             this.lblMsg.Text = "*";
             // 
@@ -114,49 +111,45 @@
             // 
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.btnSubmit, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 1, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(394, 218);
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnSubmit, 2, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 188);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(499, 47);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1014, 47);
             this.tableLayoutPanel2.TabIndex = 3;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(762, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(249, 41);
+            this.btnCancel.TabIndex = 0;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSubmit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(3, 3);
+            this.btnSubmit.Location = new System.Drawing.Point(509, 3);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(243, 41);
+            this.btnSubmit.Size = new System.Drawing.Size(247, 41);
             this.btnSubmit.TabIndex = 0;
             this.btnSubmit.Text = "Save Details";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(252, 3);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(244, 41);
-            this.btnCancel.TabIndex = 0;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -177,7 +170,8 @@
             this.tableLayoutPanel1.Controls.Add(this.txtBuyerDL, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtBuyerTIN, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.txtBuyerEmail, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(121, 21);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 5;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.23077F));
@@ -186,7 +180,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(772, 191);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 179);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label1
@@ -200,7 +194,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(766, 45);
+            this.label1.Size = new System.Drawing.Size(1002, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Buyer Details";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -211,9 +205,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerName.AutoSize = true;
             this.lblBuyerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuyerName.Location = new System.Drawing.Point(3, 45);
+            this.lblBuyerName.Location = new System.Drawing.Point(3, 42);
             this.lblBuyerName.Name = "lblBuyerName";
-            this.lblBuyerName.Size = new System.Drawing.Size(83, 36);
+            this.lblBuyerName.Size = new System.Drawing.Size(83, 34);
             this.lblBuyerName.TabIndex = 1;
             this.lblBuyerName.Text = "Buyer Name";
             this.lblBuyerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,9 +218,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblContact.AutoSize = true;
             this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContact.Location = new System.Drawing.Point(388, 45);
+            this.lblContact.Location = new System.Drawing.Point(506, 42);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(77, 36);
+            this.lblContact.Size = new System.Drawing.Size(77, 34);
             this.lblContact.TabIndex = 1;
             this.lblContact.Text = "Contact No.";
             this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -237,9 +231,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerAdd1.AutoSize = true;
             this.lblBuyerAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuyerAdd1.Location = new System.Drawing.Point(3, 81);
+            this.lblBuyerAdd1.Location = new System.Drawing.Point(3, 76);
             this.lblBuyerAdd1.Name = "lblBuyerAdd1";
-            this.lblBuyerAdd1.Size = new System.Drawing.Size(94, 36);
+            this.lblBuyerAdd1.Size = new System.Drawing.Size(94, 34);
             this.lblBuyerAdd1.TabIndex = 1;
             this.lblBuyerAdd1.Text = "Address Line1";
             this.lblBuyerAdd1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -250,9 +244,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerAdd2.AutoSize = true;
             this.lblBuyerAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBuyerAdd2.Location = new System.Drawing.Point(388, 81);
+            this.lblBuyerAdd2.Location = new System.Drawing.Point(506, 76);
             this.lblBuyerAdd2.Name = "lblBuyerAdd2";
-            this.lblBuyerAdd2.Size = new System.Drawing.Size(94, 36);
+            this.lblBuyerAdd2.Size = new System.Drawing.Size(94, 34);
             this.lblBuyerAdd2.TabIndex = 1;
             this.lblBuyerAdd2.Text = "Address Line2";
             this.lblBuyerAdd2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -263,9 +257,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 117);
+            this.label6.Location = new System.Drawing.Point(3, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 36);
+            this.label6.Size = new System.Drawing.Size(49, 34);
             this.label6.TabIndex = 1;
             this.label6.Text = "DL No.";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -276,9 +270,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(388, 117);
+            this.label7.Location = new System.Drawing.Point(506, 110);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 36);
+            this.label7.Size = new System.Drawing.Size(54, 34);
             this.label7.TabIndex = 1;
             this.label7.Text = "TIN No.";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -289,9 +283,9 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 153);
+            this.label8.Location = new System.Drawing.Point(3, 144);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 38);
+            this.label8.Size = new System.Drawing.Size(58, 35);
             this.label8.TabIndex = 1;
             this.label8.Text = "Email ID";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -302,9 +296,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerName.Location = new System.Drawing.Point(157, 48);
+            this.txtBuyerName.Location = new System.Drawing.Point(204, 45);
             this.txtBuyerName.Name = "txtBuyerName";
-            this.txtBuyerName.Size = new System.Drawing.Size(225, 22);
+            this.txtBuyerName.Size = new System.Drawing.Size(296, 22);
             this.txtBuyerName.TabIndex = 2;
             // 
             // txtBuyerContact
@@ -313,9 +307,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerContact.Location = new System.Drawing.Point(542, 48);
+            this.txtBuyerContact.Location = new System.Drawing.Point(707, 45);
             this.txtBuyerContact.Name = "txtBuyerContact";
-            this.txtBuyerContact.Size = new System.Drawing.Size(227, 22);
+            this.txtBuyerContact.Size = new System.Drawing.Size(298, 22);
             this.txtBuyerContact.TabIndex = 2;
             // 
             // txtBuyerAddr1
@@ -324,9 +318,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerAddr1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerAddr1.Location = new System.Drawing.Point(157, 84);
+            this.txtBuyerAddr1.Location = new System.Drawing.Point(204, 79);
             this.txtBuyerAddr1.Name = "txtBuyerAddr1";
-            this.txtBuyerAddr1.Size = new System.Drawing.Size(225, 22);
+            this.txtBuyerAddr1.Size = new System.Drawing.Size(296, 22);
             this.txtBuyerAddr1.TabIndex = 2;
             // 
             // txtBuyerAddr2
@@ -335,9 +329,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerAddr2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerAddr2.Location = new System.Drawing.Point(542, 84);
+            this.txtBuyerAddr2.Location = new System.Drawing.Point(707, 79);
             this.txtBuyerAddr2.Name = "txtBuyerAddr2";
-            this.txtBuyerAddr2.Size = new System.Drawing.Size(227, 22);
+            this.txtBuyerAddr2.Size = new System.Drawing.Size(298, 22);
             this.txtBuyerAddr2.TabIndex = 2;
             // 
             // txtBuyerDL
@@ -346,9 +340,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerDL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerDL.Location = new System.Drawing.Point(157, 120);
+            this.txtBuyerDL.Location = new System.Drawing.Point(204, 113);
             this.txtBuyerDL.Name = "txtBuyerDL";
-            this.txtBuyerDL.Size = new System.Drawing.Size(225, 22);
+            this.txtBuyerDL.Size = new System.Drawing.Size(296, 22);
             this.txtBuyerDL.TabIndex = 2;
             // 
             // txtBuyerTIN
@@ -357,9 +351,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerTIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerTIN.Location = new System.Drawing.Point(542, 120);
+            this.txtBuyerTIN.Location = new System.Drawing.Point(707, 113);
             this.txtBuyerTIN.Name = "txtBuyerTIN";
-            this.txtBuyerTIN.Size = new System.Drawing.Size(227, 22);
+            this.txtBuyerTIN.Size = new System.Drawing.Size(298, 22);
             this.txtBuyerTIN.TabIndex = 2;
             // 
             // txtBuyerEmail
@@ -368,15 +362,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuyerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuyerEmail.Location = new System.Drawing.Point(157, 156);
+            this.txtBuyerEmail.Location = new System.Drawing.Point(204, 147);
             this.txtBuyerEmail.Name = "txtBuyerEmail";
-            this.txtBuyerEmail.Size = new System.Drawing.Size(225, 22);
+            this.txtBuyerEmail.Size = new System.Drawing.Size(296, 22);
             this.txtBuyerEmail.TabIndex = 2;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.grdBuyerDetails);
-            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel4);
+            this.tabPage2.Controls.Add(this.dataGridSupDetails);
+            this.tabPage2.Controls.Add(this.tableLayoutPanel3);
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -385,101 +381,140 @@
             this.tabPage2.Text = "Edit/Remove Buyer";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // grdBuyerDetails
+            // tableLayoutPanel4
             // 
-            this.grdBuyerDetails.AllowUserToAddRows = false;
-            this.grdBuyerDetails.AutoGenerateColumns = false;
-            this.grdBuyerDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdBuyerDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.custidDataGridViewTextBoxColumn,
-            this.custnameDataGridViewTextBoxColumn,
-            this.dLnoDataGridViewTextBoxColumn,
-            this.tINnoDataGridViewTextBoxColumn,
-            this.addressline1DataGridViewTextBoxColumn,
-            this.addressline2DataGridViewTextBoxColumn,
-            this.contactnoDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn});
-            this.grdBuyerDetails.DataSource = this.customermasterBindingSource;
-            this.grdBuyerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdBuyerDetails.Location = new System.Drawing.Point(3, 25);
-            this.grdBuyerDetails.Name = "grdBuyerDetails";
-            this.grdBuyerDetails.Size = new System.Drawing.Size(1008, 346);
-            this.grdBuyerDetails.TabIndex = 2;
+            this.tableLayoutPanel4.ColumnCount = 4;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel4.Controls.Add(this.label11, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel4.Controls.Add(this.comboSearchBy, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.txtSearchText, 2, 1);
+            this.tableLayoutPanel4.Controls.Add(this.btnSearch, 3, 1);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1008, 68);
+            this.tableLayoutPanel4.TabIndex = 8;
             // 
-            // custidDataGridViewTextBoxColumn
+            // label11
             // 
-            this.custidDataGridViewTextBoxColumn.DataPropertyName = "cust_id";
-            this.custidDataGridViewTextBoxColumn.HeaderText = "cust_id";
-            this.custidDataGridViewTextBoxColumn.Name = "custidDataGridViewTextBoxColumn";
+            this.label11.AutoSize = true;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tableLayoutPanel4.SetColumnSpan(this.label11, 4);
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(1002, 34);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "View/Modify Supplier Details";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // custnameDataGridViewTextBoxColumn
+            // label12
             // 
-            this.custnameDataGridViewTextBoxColumn.DataPropertyName = "cust_name";
-            this.custnameDataGridViewTextBoxColumn.HeaderText = "cust_name";
-            this.custnameDataGridViewTextBoxColumn.Name = "custnameDataGridViewTextBoxColumn";
+            this.label12.AutoSize = true;
+            this.label12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(3, 34);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(79, 34);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Search By";
             // 
-            // dLnoDataGridViewTextBoxColumn
+            // comboSearchBy
             // 
-            this.dLnoDataGridViewTextBoxColumn.DataPropertyName = "DL_no";
-            this.dLnoDataGridViewTextBoxColumn.HeaderText = "DL_no";
-            this.dLnoDataGridViewTextBoxColumn.Name = "dLnoDataGridViewTextBoxColumn";
+            this.comboSearchBy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboSearchBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboSearchBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboSearchBy.FormattingEnabled = true;
+            this.comboSearchBy.Items.AddRange(new object[] {
+            "Supplier ID",
+            "Supplier Name",
+            "Contact Number",
+            "DL Number",
+            "TIN Number"});
+            this.comboSearchBy.Location = new System.Drawing.Point(154, 37);
+            this.comboSearchBy.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.comboSearchBy.Name = "comboSearchBy";
+            this.comboSearchBy.Size = new System.Drawing.Size(329, 26);
+            this.comboSearchBy.TabIndex = 2;
             // 
-            // tINnoDataGridViewTextBoxColumn
+            // txtSearchText
             // 
-            this.tINnoDataGridViewTextBoxColumn.DataPropertyName = "TIN_no";
-            this.tINnoDataGridViewTextBoxColumn.HeaderText = "TIN_no";
-            this.tINnoDataGridViewTextBoxColumn.Name = "tINnoDataGridViewTextBoxColumn";
+            this.txtSearchText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSearchText.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchText.Location = new System.Drawing.Point(506, 37);
+            this.txtSearchText.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
+            this.txtSearchText.Name = "txtSearchText";
+            this.txtSearchText.Size = new System.Drawing.Size(329, 24);
+            this.txtSearchText.TabIndex = 3;
             // 
-            // addressline1DataGridViewTextBoxColumn
+            // btnSearch
             // 
-            this.addressline1DataGridViewTextBoxColumn.DataPropertyName = "address_line1";
-            this.addressline1DataGridViewTextBoxColumn.HeaderText = "address_line1";
-            this.addressline1DataGridViewTextBoxColumn.Name = "addressline1DataGridViewTextBoxColumn";
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(858, 37);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(147, 28);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // addressline2DataGridViewTextBoxColumn
+            // dataGridSupDetails
             // 
-            this.addressline2DataGridViewTextBoxColumn.DataPropertyName = "address_line2";
-            this.addressline2DataGridViewTextBoxColumn.HeaderText = "address_line2";
-            this.addressline2DataGridViewTextBoxColumn.Name = "addressline2DataGridViewTextBoxColumn";
+            this.dataGridSupDetails.AllowUserToAddRows = false;
+            this.dataGridSupDetails.AllowUserToDeleteRows = false;
+            this.dataGridSupDetails.AllowUserToResizeRows = false;
+            this.dataGridSupDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridSupDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSupDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridSupDetails.Location = new System.Drawing.Point(3, 57);
+            this.dataGridSupDetails.Name = "dataGridSupDetails";
+            this.dataGridSupDetails.Size = new System.Drawing.Size(1008, 314);
+            this.dataGridSupDetails.TabIndex = 6;
             // 
-            // contactnoDataGridViewTextBoxColumn
+            // tableLayoutPanel3
             // 
-            this.contactnoDataGridViewTextBoxColumn.DataPropertyName = "contact_no";
-            this.contactnoDataGridViewTextBoxColumn.HeaderText = "contact_no";
-            this.contactnoDataGridViewTextBoxColumn.Name = "contactnoDataGridViewTextBoxColumn";
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.btnUpdate, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnDelete, 1, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 108);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(281, 39);
+            this.tableLayoutPanel3.TabIndex = 7;
             // 
-            // emailDataGridViewTextBoxColumn
+            // btnUpdate
             // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(3, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(134, 33);
+            this.btnUpdate.TabIndex = 0;
+            this.btnUpdate.Text = "Update Details";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
-            // customermasterBindingSource
+            // btnDelete
             // 
-            this.customermasterBindingSource.DataMember = "customer_master";
-            this.customermasterBindingSource.DataSource = this.dB_SSM_Medical_InventoryDataSet;
-            // 
-            // dB_SSM_Medical_InventoryDataSet
-            // 
-            this.dB_SSM_Medical_InventoryDataSet.DataSetName = "DB_SSM_Medical_InventoryDataSet";
-            this.dB_SSM_Medical_InventoryDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 22);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Buyer Details";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // customer_masterTableAdapter
-            // 
-            this.customer_masterTableAdapter.ClearBeforeFill = true;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(143, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(135, 33);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Delete Supplier";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // buyerDetails
             // 
@@ -497,10 +532,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBuyerDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customermasterBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dB_SSM_Medical_InventoryDataSet)).EndInit();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupDetails)).EndInit();
+            this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -509,7 +544,6 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
@@ -530,18 +564,16 @@
         private System.Windows.Forms.TextBox txtBuyerTIN;
         private System.Windows.Forms.TextBox txtBuyerEmail;
         private System.Windows.Forms.Label lblMsg;
-        private System.Windows.Forms.DataGridView grdBuyerDetails;
-        private System.Windows.Forms.Label label2;
-        private DB_SSM_Medical_InventoryDataSet dB_SSM_Medical_InventoryDataSet;
-        private System.Windows.Forms.BindingSource customermasterBindingSource;
-        private DB_SSM_Medical_InventoryDataSetTableAdapters.customer_masterTableAdapter customer_masterTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dLnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tINnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressline1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn addressline2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contactnoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboSearchBy;
+        private System.Windows.Forms.TextBox txtSearchText;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.DataGridView dataGridSupDetails;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -44,6 +44,8 @@
     <Compile Include="BOlogin.cs" />
     <Compile Include="BOProductDetails.cs" />
     <Compile Include="BOPurchaseBill.cs" />
+    <Compile Include="BOPurchaseBillDetails.cs" />
+    <Compile Include="BOPurchaseBillProductDetails.cs" />
     <Compile Include="BOSuppDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

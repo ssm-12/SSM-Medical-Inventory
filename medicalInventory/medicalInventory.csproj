@@ -54,11 +54,6 @@
     <Compile Include="buyerDetails.Designer.cs">
       <DependentUpon>buyerDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="DB_SSM_Medical_InventoryDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,17 +78,35 @@
     <Compile Include="productDetails.Designer.cs">
       <DependentUpon>productDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="puchaseBillProductDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="puchaseBillProductDetails.Designer.cs">
+      <DependentUpon>puchaseBillProductDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="purchaseBill.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="purchaseBill.Designer.cs">
       <DependentUpon>purchaseBill.cs</DependentUpon>
     </Compile>
+    <Compile Include="purchaseBillDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="purchaseBillDetails.Designer.cs">
+      <DependentUpon>purchaseBillDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="quickAddProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="quickAddProduct.Designer.cs">
       <DependentUpon>quickAddProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="retailNewBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="retailNewBill.Designer.cs">
+      <DependentUpon>retailNewBill.cs</DependentUpon>
     </Compile>
     <Compile Include="stock.cs">
       <SubType>Form</SubType>
@@ -135,11 +148,20 @@
     <EmbeddedResource Include="productDetails.resx">
       <DependentUpon>productDetails.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="puchaseBillProductDetails.resx">
+      <DependentUpon>puchaseBillProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="purchaseBill.resx">
       <DependentUpon>purchaseBill.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="purchaseBillDetails.resx">
+      <DependentUpon>purchaseBillDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="quickAddProduct.resx">
       <DependentUpon>quickAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="retailNewBill.resx">
+      <DependentUpon>retailNewBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="stock.resx">
       <DependentUpon>stock.cs</DependentUpon>
@@ -164,17 +186,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DB_SSM_Medical_InventoryDataSet.xsc">
-      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="DB_SSM_Medical_InventoryDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DB_SSM_Medical_InventoryDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="DB_SSM_Medical_InventoryDataSet.xss">
-      <DependentUpon>DB_SSM_Medical_InventoryDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

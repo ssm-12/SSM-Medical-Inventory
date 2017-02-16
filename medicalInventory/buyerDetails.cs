@@ -58,8 +58,21 @@ namespace medicalInventory
 
         private void buyerDetails_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'dB_SSM_Medical_InventoryDataSet.customer_master' table. You can move, or remove it, as needed.
-            this.customer_masterTableAdapter.Fill(this.dB_SSM_Medical_InventoryDataSet.customer_master);
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -55,12 +55,16 @@
             this.contextMenuPurchaseBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewBillDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuRetailBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.newBillToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewBillDetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.contextMenuOnProductBtn.SuspendLayout();
             this.contextMenuSupplierL.SuspendLayout();
             this.contextMenuPurchaseBtn.SuspendLayout();
+            this.contextMenuRetailBtn.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -147,7 +151,7 @@
             this.btnBuyerDetails.Name = "btnBuyerDetails";
             this.btnBuyerDetails.Size = new System.Drawing.Size(182, 35);
             this.btnBuyerDetails.TabIndex = 7;
-            this.btnBuyerDetails.Text = "Buyer Details";
+            this.btnBuyerDetails.Text = "Customer Master";
             this.btnBuyerDetails.UseVisualStyleBackColor = true;
             // 
             // btnRetail
@@ -159,7 +163,7 @@
             this.btnRetail.TabIndex = 2;
             this.btnRetail.Text = "Retail";
             this.btnRetail.UseVisualStyleBackColor = true;
-            this.btnRetail.Click += new System.EventHandler(this.button2_Click);
+            this.btnRetail.Click += new System.EventHandler(this.btnRetail_Click);
             // 
             // btnSupply
             // 
@@ -179,7 +183,7 @@
             this.btnSuppDetails.Name = "btnSuppDetails";
             this.btnSuppDetails.Size = new System.Drawing.Size(182, 35);
             this.btnSuppDetails.TabIndex = 6;
-            this.btnSuppDetails.Text = "Supplier Ledger";
+            this.btnSuppDetails.Text = "Supplier Master";
             this.btnSuppDetails.UseVisualStyleBackColor = true;
             this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
             // 
@@ -214,7 +218,7 @@
             this.lblSilverPrice});
             this.statusStrip1.Location = new System.Drawing.Point(200, 403);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(520, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(699, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -300,7 +304,7 @@
             this.newBillToolStripMenuItem,
             this.viewBillDetailsToolStripMenuItem});
             this.contextMenuPurchaseBtn.Name = "contextMenuPurchaseBtn";
-            this.contextMenuPurchaseBtn.Size = new System.Drawing.Size(157, 70);
+            this.contextMenuPurchaseBtn.Size = new System.Drawing.Size(157, 48);
             // 
             // newBillToolStripMenuItem
             // 
@@ -314,12 +318,34 @@
             this.viewBillDetailsToolStripMenuItem.Name = "viewBillDetailsToolStripMenuItem";
             this.viewBillDetailsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.viewBillDetailsToolStripMenuItem.Text = "View Bill Details";
+            this.viewBillDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewBillDetailsToolStripMenuItem_Click);
+            // 
+            // contextMenuRetailBtn
+            // 
+            this.contextMenuRetailBtn.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newBillToolStripMenuItem1,
+            this.viewBillDetailsToolStripMenuItem1});
+            this.contextMenuRetailBtn.Name = "contextMenuRetailBtn";
+            this.contextMenuRetailBtn.Size = new System.Drawing.Size(197, 48);
+            // 
+            // newBillToolStripMenuItem1
+            // 
+            this.newBillToolStripMenuItem1.Name = "newBillToolStripMenuItem1";
+            this.newBillToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
+            this.newBillToolStripMenuItem1.Text = "New Bill (Retail)";
+            this.newBillToolStripMenuItem1.Click += new System.EventHandler(this.newBillToolStripMenuItem1_Click);
+            // 
+            // viewBillDetailsToolStripMenuItem1
+            // 
+            this.viewBillDetailsToolStripMenuItem1.Name = "viewBillDetailsToolStripMenuItem1";
+            this.viewBillDetailsToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
+            this.viewBillDetailsToolStripMenuItem1.Text = "View Bill Details (Retail)";
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 425);
+            this.ClientSize = new System.Drawing.Size(899, 425);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
@@ -336,6 +362,7 @@
             this.contextMenuOnProductBtn.ResumeLayout(false);
             this.contextMenuSupplierL.ResumeLayout(false);
             this.contextMenuPurchaseBtn.ResumeLayout(false);
+            this.contextMenuRetailBtn.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,5 +396,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuPurchaseBtn;
         private System.Windows.Forms.ToolStripMenuItem newBillToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewBillDetailsToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuRetailBtn;
+        private System.Windows.Forms.ToolStripMenuItem newBillToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem viewBillDetailsToolStripMenuItem1;
     }
 }

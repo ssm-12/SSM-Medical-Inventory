@@ -59,6 +59,8 @@
     <Compile Include="DALlogin.cs" />
     <Compile Include="DALProductDetails.cs" />
     <Compile Include="DALPurchaseBill.cs" />
+    <Compile Include="DALPurchaseBillDetails.cs" />
+    <Compile Include="DALPurchaseBillProductDetails.cs" />
     <Compile Include="DALSuppDetails.cs" />
     <Compile Include="DALUpdateProductPacking.cs" />
     <Compile Include="DB_Utility.cs" />

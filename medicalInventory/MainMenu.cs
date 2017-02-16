@@ -47,9 +47,9 @@ namespace medicalInventory
  	        
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnRetail_Click(object sender, EventArgs e)
         {
-            
+            contextMenuRetailBtn.Show(btnRetail, new Point(btnRetail.Width, 0));
         }
 
         private void btnPurchase_Click(object sender, EventArgs e)
@@ -163,6 +163,25 @@ namespace medicalInventory
             {
                 funcBringToFront("purchaseBill");
             }
+        }
+
+        private void viewBillDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("purchaseBillDetails"))
+            {
+                purchaseBillDetails frmInvoiceDetails = new purchaseBillDetails();
+                frmInvoiceDetails.MdiParent = this;
+                frmInvoiceDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("purchaseBillDetails");
+            }
+        }
+
+        private void newBillToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
