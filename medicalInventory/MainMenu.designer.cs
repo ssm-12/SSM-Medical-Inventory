@@ -58,6 +58,9 @@
             this.contextMenuRetailBtn = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.newBillToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewBillDetailsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuCustomerMaster = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuModifyCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -65,6 +68,7 @@
             this.contextMenuSupplierL.SuspendLayout();
             this.contextMenuPurchaseBtn.SuspendLayout();
             this.contextMenuRetailBtn.SuspendLayout();
+            this.contextMenuCustomerMaster.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -153,6 +157,7 @@
             this.btnBuyerDetails.TabIndex = 7;
             this.btnBuyerDetails.Text = "Customer Master";
             this.btnBuyerDetails.UseVisualStyleBackColor = true;
+            this.btnBuyerDetails.Click += new System.EventHandler(this.btnCustomerMaster_Click);
             // 
             // btnRetail
             // 
@@ -341,6 +346,28 @@
             this.viewBillDetailsToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.viewBillDetailsToolStripMenuItem1.Text = "View Bill Details (Retail)";
             // 
+            // contextMenuCustomerMaster
+            // 
+            this.contextMenuCustomerMaster.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuAddCustomer,
+            this.toolStripMenuModifyCustomer});
+            this.contextMenuCustomerMaster.Name = "contextMenuSupplierL";
+            this.contextMenuCustomerMaster.Size = new System.Drawing.Size(236, 48);
+            // 
+            // toolStripMenuAddCustomer
+            // 
+            this.toolStripMenuAddCustomer.Name = "toolStripMenuAddCustomer";
+            this.toolStripMenuAddCustomer.Size = new System.Drawing.Size(235, 22);
+            this.toolStripMenuAddCustomer.Text = "Add New Customer";
+            this.toolStripMenuAddCustomer.Click += new System.EventHandler(this.toolStripMenuAddCustomer_Click);
+            // 
+            // toolStripMenuModifyCustomer
+            // 
+            this.toolStripMenuModifyCustomer.Name = "toolStripMenuModifyCustomer";
+            this.toolStripMenuModifyCustomer.Size = new System.Drawing.Size(235, 22);
+            this.toolStripMenuModifyCustomer.Text = "View/Modify Customer Details";
+            this.toolStripMenuModifyCustomer.Click += new System.EventHandler(this.toolStripMenuModifyCustomer_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,6 +390,7 @@
             this.contextMenuSupplierL.ResumeLayout(false);
             this.contextMenuPurchaseBtn.ResumeLayout(false);
             this.contextMenuRetailBtn.ResumeLayout(false);
+            this.contextMenuCustomerMaster.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,5 +427,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuRetailBtn;
         private System.Windows.Forms.ToolStripMenuItem newBillToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem viewBillDetailsToolStripMenuItem1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuCustomerMaster;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddCustomer;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuModifyCustomer;
     }
 }

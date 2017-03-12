@@ -57,6 +57,12 @@ namespace BAL
             return retVal;
         }
 
+        public bool funcDeleteSupplierMaster(string suppID)
+        {
+            bool retVal = objDALSuppDetails.funcDeleteSupplierRecord(suppID);
+            return retVal;
+        }
+
         public int funcCheckDuplicateSup(BOSuppDetails objBOSupDetails)
         {
             int retVal = objDALSuppDetails.funcCheckDuplicateSup(objBOSupDetails);

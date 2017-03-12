@@ -133,5 +133,29 @@ namespace DAL
                 return false;
             }
         }
+
+        public bool funcDeleteSupplierRecord(string suppID)
+        {
+            objDB_Utility = new DB_Utility();
+            try
+            {
+                //Set a flag inactive for that supplier record && also populate only active suppliers
+                /*
+                SqlConnection con = objDB_Utility.funcOpenConnection();
+                SqlCommand cmd = new SqlCommand("DELETE FROM supp_amount_payable WHERE supp_id=@supp_id", con);
+                cmd.Parameters.AddWithValue("@supp_id", suppID);
+                cmd.ExecuteNonQuery();
+                 */
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            finally
+            {
+                objDB_Utility.funcCloseConnection();
+            }
+        }
     }
 }

@@ -225,7 +225,11 @@ namespace medicalInventory
                 foreach (DataGridViewRow dataGridRow in dataGridSupDetails.SelectedRows)
                 {
                     if (dataGridRow.Selected)
+                    {
+                        objBALSuppDetails.funcDeleteSupplierMaster(dataGridSupDetails.Rows[dataGridRow.Index].Cells[0].Value.ToString());
                         dataGridSupDetails.Rows.RemoveAt(dataGridRow.Index);
+
+                    }
                     //dataGridProdDetails.Rows.RemoveAt(oneCell.RowIndex);
                 }
                 bool retVal = objBALSuppDetails.funcUpdateSupplierMaster();

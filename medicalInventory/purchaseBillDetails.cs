@@ -24,6 +24,7 @@ namespace medicalInventory
         private void purchaseBillDetails_Load(object sender, EventArgs e)
         {
             dateTimeFrom.Value = Convert.ToDateTime(DateTime.Today.Year + "/" + DateTime.Today.Month + "/01");
+            comboSearchBy.Select();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

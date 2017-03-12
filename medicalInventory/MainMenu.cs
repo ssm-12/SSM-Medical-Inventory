@@ -181,7 +181,61 @@ namespace medicalInventory
 
         private void newBillToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (!funcIsFormOpen("retailNewBill"))
+            {
+                try
+                {
+                    pleaseWaitForm frmPleaseWait = new pleaseWaitForm();
+                    frmPleaseWait.Show();
+                    Application.DoEvents();
+                    retailNewBill frmRetailNewBill = new retailNewBill();
+                    frmRetailNewBill.MdiParent = this;
+                    Cursor.Position = this.PointToScreen(new Point(0,0));
+                    frmRetailNewBill.Show();
+                    frmPleaseWait.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please Try Again...", "System Busy", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                funcBringToFront("retailNewBill");
+            }
+        }
 
+        private void btnCustomerMaster_Click(object sender, EventArgs e)
+        {
+            contextMenuCustomerMaster.Show(btnBuyerDetails, new Point(btnBuyerDetails.Width, 0));
+        }
+
+        private void toolStripMenuAddCustomer_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("buyerDetails"))
+            {
+                buyerDetails frmBuyerDetails = new buyerDetails(1);
+                frmBuyerDetails.MdiParent = this;
+                frmBuyerDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("buyerDetails");
+            }
+        }
+
+        private void toolStripMenuModifyCustomer_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("buyerDetails"))
+            {
+                buyerDetails frmBuyerDetails = new buyerDetails(2);
+                frmBuyerDetails.MdiParent = this;
+                frmBuyerDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("buyerDetails");
+            }
         }
     }
 }

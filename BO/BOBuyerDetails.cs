@@ -12,8 +12,10 @@ namespace BO
         public string buyerContactNo { get; set; }
         public string buyerAddr1 { get; set; }
         public string buyerAddr2 { get; set; }
-        public string buyerLlNo { get; set; }
+        public string buyerDLNo { get; set; }
         public string buyerTinNo { get; set; }
         public string buyerEmailId { get; set; }
+        public string searchBy { get; set; }
+        public string searchTerm { get; set; }
     }
 }

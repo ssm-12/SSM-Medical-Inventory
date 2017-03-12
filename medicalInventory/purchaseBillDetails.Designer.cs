@@ -138,7 +138,7 @@
             this.txtSearch.Location = new System.Drawing.Point(507, 90);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(243, 22);
-            this.txtSearch.TabIndex = 2;
+            this.txtSearch.TabIndex = 3;
             // 
             // btnSearch
             // 
@@ -147,7 +147,7 @@
             this.btnSearch.Location = new System.Drawing.Point(758, 90);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(246, 29);
-            this.btnSearch.TabIndex = 3;
+            this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -159,7 +159,7 @@
             this.dateTimeFrom.Location = new System.Drawing.Point(256, 54);
             this.dateTimeFrom.Name = "dateTimeFrom";
             this.dateTimeFrom.Size = new System.Drawing.Size(243, 22);
-            this.dateTimeFrom.TabIndex = 4;
+            this.dateTimeFrom.TabIndex = 0;
             // 
             // dateTimeTo
             // 
@@ -168,7 +168,7 @@
             this.dateTimeTo.Location = new System.Drawing.Point(758, 54);
             this.dateTimeTo.Name = "dateTimeTo";
             this.dateTimeTo.Size = new System.Drawing.Size(246, 22);
-            this.dateTimeTo.TabIndex = 4;
+            this.dateTimeTo.TabIndex = 1;
             // 
             // comboSearchBy
             // 
@@ -182,7 +182,7 @@
             this.comboSearchBy.Location = new System.Drawing.Point(256, 90);
             this.comboSearchBy.Name = "comboSearchBy";
             this.comboSearchBy.Size = new System.Drawing.Size(243, 24);
-            this.comboSearchBy.TabIndex = 5;
+            this.comboSearchBy.TabIndex = 2;
             // 
             // dataGridInvoiceList
             // 

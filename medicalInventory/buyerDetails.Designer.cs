@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblMsg = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -51,13 +51,15 @@
             this.txtBuyerTIN = new System.Windows.Forms.TextBox();
             this.txtBuyerEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.comboSearchBy = new System.Windows.Forms.ComboBox();
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.dataGridSupDetails = new System.Windows.Forms.DataGridView();
+            this.dataGridCustDetails = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -66,8 +68,9 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCustDetails)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,31 +84,22 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1022, 432);
+            this.tabControl1.Size = new System.Drawing.Size(1022, 663);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_IndexChange);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lblMsg);
             this.tabPage1.Controls.Add(this.tableLayoutPanel2);
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 54);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1014, 374);
+            this.tabPage1.Size = new System.Drawing.Size(1014, 605);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "        Add Buyer       ";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // lblMsg
-            // 
-            this.lblMsg.AutoSize = true;
-            this.lblMsg.Location = new System.Drawing.Point(228, 249);
-            this.lblMsg.Name = "lblMsg";
-            this.lblMsg.Size = new System.Drawing.Size(14, 16);
-            this.lblMsg.TabIndex = 4;
-            this.lblMsg.Text = "*";
             // 
             // tableLayoutPanel2
             // 
@@ -132,9 +126,10 @@
             this.btnCancel.Location = new System.Drawing.Point(762, 3);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(249, 41);
-            this.btnCancel.TabIndex = 0;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSubmit
             // 
@@ -204,12 +199,12 @@
             this.lblBuyerName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerName.AutoSize = true;
-            this.lblBuyerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuyerName.Location = new System.Drawing.Point(3, 42);
             this.lblBuyerName.Name = "lblBuyerName";
-            this.lblBuyerName.Size = new System.Drawing.Size(83, 34);
+            this.lblBuyerName.Size = new System.Drawing.Size(120, 34);
             this.lblBuyerName.TabIndex = 1;
-            this.lblBuyerName.Text = "Buyer Name";
+            this.lblBuyerName.Text = "Customer Name *";
             this.lblBuyerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblContact
@@ -217,12 +212,12 @@
             this.lblContact.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblContact.AutoSize = true;
-            this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContact.Location = new System.Drawing.Point(506, 42);
             this.lblContact.Name = "lblContact";
-            this.lblContact.Size = new System.Drawing.Size(77, 34);
+            this.lblContact.Size = new System.Drawing.Size(91, 34);
             this.lblContact.TabIndex = 1;
-            this.lblContact.Text = "Contact No.";
+            this.lblContact.Text = "Contact No. *";
             this.lblContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblBuyerAdd1
@@ -230,10 +225,10 @@
             this.lblBuyerAdd1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerAdd1.AutoSize = true;
-            this.lblBuyerAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyerAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuyerAdd1.Location = new System.Drawing.Point(3, 76);
             this.lblBuyerAdd1.Name = "lblBuyerAdd1";
-            this.lblBuyerAdd1.Size = new System.Drawing.Size(94, 34);
+            this.lblBuyerAdd1.Size = new System.Drawing.Size(98, 34);
             this.lblBuyerAdd1.TabIndex = 1;
             this.lblBuyerAdd1.Text = "Address Line1";
             this.lblBuyerAdd1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -243,10 +238,10 @@
             this.lblBuyerAdd2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBuyerAdd2.AutoSize = true;
-            this.lblBuyerAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuyerAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBuyerAdd2.Location = new System.Drawing.Point(506, 76);
             this.lblBuyerAdd2.Name = "lblBuyerAdd2";
-            this.lblBuyerAdd2.Size = new System.Drawing.Size(94, 34);
+            this.lblBuyerAdd2.Size = new System.Drawing.Size(98, 34);
             this.lblBuyerAdd2.TabIndex = 1;
             this.lblBuyerAdd2.Text = "Address Line2";
             this.lblBuyerAdd2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -256,10 +251,10 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(3, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 34);
+            this.label6.Size = new System.Drawing.Size(51, 34);
             this.label6.TabIndex = 1;
             this.label6.Text = "DL No.";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -269,10 +264,10 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(506, 110);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 34);
+            this.label7.Size = new System.Drawing.Size(55, 34);
             this.label7.TabIndex = 1;
             this.label7.Text = "TIN No.";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,10 +277,10 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 144);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 35);
+            this.label8.Size = new System.Drawing.Size(62, 35);
             this.label8.TabIndex = 1;
             this.label8.Text = "Email ID";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,7 +294,7 @@
             this.txtBuyerName.Location = new System.Drawing.Point(204, 45);
             this.txtBuyerName.Name = "txtBuyerName";
             this.txtBuyerName.Size = new System.Drawing.Size(296, 22);
-            this.txtBuyerName.TabIndex = 2;
+            this.txtBuyerName.TabIndex = 0;
             // 
             // txtBuyerContact
             // 
@@ -310,7 +305,7 @@
             this.txtBuyerContact.Location = new System.Drawing.Point(707, 45);
             this.txtBuyerContact.Name = "txtBuyerContact";
             this.txtBuyerContact.Size = new System.Drawing.Size(298, 22);
-            this.txtBuyerContact.TabIndex = 2;
+            this.txtBuyerContact.TabIndex = 1;
             // 
             // txtBuyerAddr1
             // 
@@ -332,7 +327,7 @@
             this.txtBuyerAddr2.Location = new System.Drawing.Point(707, 79);
             this.txtBuyerAddr2.Name = "txtBuyerAddr2";
             this.txtBuyerAddr2.Size = new System.Drawing.Size(298, 22);
-            this.txtBuyerAddr2.TabIndex = 2;
+            this.txtBuyerAddr2.TabIndex = 3;
             // 
             // txtBuyerDL
             // 
@@ -343,7 +338,7 @@
             this.txtBuyerDL.Location = new System.Drawing.Point(204, 113);
             this.txtBuyerDL.Name = "txtBuyerDL";
             this.txtBuyerDL.Size = new System.Drawing.Size(296, 22);
-            this.txtBuyerDL.TabIndex = 2;
+            this.txtBuyerDL.TabIndex = 4;
             // 
             // txtBuyerTIN
             // 
@@ -354,7 +349,7 @@
             this.txtBuyerTIN.Location = new System.Drawing.Point(707, 113);
             this.txtBuyerTIN.Name = "txtBuyerTIN";
             this.txtBuyerTIN.Size = new System.Drawing.Size(298, 22);
-            this.txtBuyerTIN.TabIndex = 2;
+            this.txtBuyerTIN.TabIndex = 5;
             // 
             // txtBuyerEmail
             // 
@@ -365,21 +360,50 @@
             this.txtBuyerEmail.Location = new System.Drawing.Point(204, 147);
             this.txtBuyerEmail.Name = "txtBuyerEmail";
             this.txtBuyerEmail.Size = new System.Drawing.Size(296, 22);
-            this.txtBuyerEmail.TabIndex = 2;
+            this.txtBuyerEmail.TabIndex = 6;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tableLayoutPanel5);
             this.tabPage2.Controls.Add(this.tableLayoutPanel4);
-            this.tabPage2.Controls.Add(this.dataGridSupDetails);
+            this.tabPage2.Controls.Add(this.dataGridCustDetails);
             this.tabPage2.Controls.Add(this.tableLayoutPanel3);
-            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 54);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1014, 374);
+            this.tabPage2.Size = new System.Drawing.Size(1014, 605);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Edit/Remove Buyer";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 152);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1018, 33);
+            this.tableLayoutPanel5.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1012, 33);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Customer Details";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel4
             // 
@@ -413,7 +437,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(1002, 34);
             this.label11.TabIndex = 0;
-            this.label11.Text = "View/Modify Supplier Details";
+            this.label11.Text = "View/Modify Customer Details";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label12
@@ -434,8 +458,8 @@
             this.comboSearchBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboSearchBy.FormattingEnabled = true;
             this.comboSearchBy.Items.AddRange(new object[] {
-            "Supplier ID",
-            "Supplier Name",
+            "Customer ID",
+            "Customer Name",
             "Contact Number",
             "DL Number",
             "TIN Number"});
@@ -465,19 +489,28 @@
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click_1);
             // 
-            // dataGridSupDetails
+            // dataGridCustDetails
             // 
-            this.dataGridSupDetails.AllowUserToAddRows = false;
-            this.dataGridSupDetails.AllowUserToDeleteRows = false;
-            this.dataGridSupDetails.AllowUserToResizeRows = false;
-            this.dataGridSupDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridSupDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridSupDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridSupDetails.Location = new System.Drawing.Point(3, 57);
-            this.dataGridSupDetails.Name = "dataGridSupDetails";
-            this.dataGridSupDetails.Size = new System.Drawing.Size(1008, 314);
-            this.dataGridSupDetails.TabIndex = 6;
+            this.dataGridCustDetails.AllowUserToAddRows = false;
+            this.dataGridCustDetails.AllowUserToDeleteRows = false;
+            this.dataGridCustDetails.AllowUserToResizeRows = false;
+            this.dataGridCustDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCustDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridCustDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCustDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridCustDetails.Location = new System.Drawing.Point(3, 236);
+            this.dataGridCustDetails.Name = "dataGridCustDetails";
+            this.dataGridCustDetails.Size = new System.Drawing.Size(1008, 366);
+            this.dataGridCustDetails.TabIndex = 6;
             // 
             // tableLayoutPanel3
             // 
@@ -487,7 +520,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.btnUpdate, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnDelete, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 108);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 191);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -504,10 +537,12 @@
             this.btnUpdate.TabIndex = 0;
             this.btnUpdate.Text = "Update Details";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(143, 3);
             this.btnDelete.Name = "btnDelete";
@@ -515,26 +550,30 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Delete Supplier";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // buyerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 432);
+            this.ClientSize = new System.Drawing.Size(1022, 663);
             this.Controls.Add(this.tabControl1);
+            this.MinimizeBox = false;
             this.Name = "buyerDetails";
             this.Text = "buyerDetails";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.buyerDetails_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridSupDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCustDetails)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -563,7 +602,6 @@
         private System.Windows.Forms.TextBox txtBuyerDL;
         private System.Windows.Forms.TextBox txtBuyerTIN;
         private System.Windows.Forms.TextBox txtBuyerEmail;
-        private System.Windows.Forms.Label lblMsg;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label11;
@@ -571,9 +609,11 @@
         private System.Windows.Forms.ComboBox comboSearchBy;
         private System.Windows.Forms.TextBox txtSearchText;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DataGridView dataGridSupDetails;
+        private System.Windows.Forms.DataGridView dataGridCustDetails;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label2;
     }
 }
