@@ -16,6 +16,7 @@ namespace medicalInventory
     public partial class retailNewBill : Form
     {
         BALRetailNewBill objBALRetailNewBill = new BALRetailNewBill();
+        BORetailNewBill objBORetailNewBill = new BORetailNewBill();
         private static string batchNumber = "";
         public retailNewBill()
         {
@@ -204,6 +205,7 @@ namespace medicalInventory
             if (txtDiscount.Text == "")
             {
                 discount = 0;
+                txtDiscount.Text = "0.00";
             }
             else
             {
@@ -223,43 +225,163 @@ namespace medicalInventory
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!funcCalculate())
+            if (!funcCalculate() || !userInputValidation())
             {
                 return;
             }
-            if (Regex.IsMatch(txtInvoiceNo.Text, @"^[0-9,a-z,A-Z]{1,20}$") == false)
+            if (saveRetailBillDetails() == true)//Data saved successfully into database
             {
-                MessageBox.Show("Invalid Invoice Number, Please enter valid Invoice Number", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInvoiceNo.Select();
-                return;
+                clearOnSubmit();
             }
-            if (dataGridProductList.Rows.Count == 0)
-            {
-                MessageBox.Show("No product(s) selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                comboProductList.Select();
-                return;
-            }
+        }
+
+        private void clearOnSubmit()
+        {
+            txtPatientName.Text = "";
+            txtAddress.Text = "";
+            txtContactNo.Text = "";
+            txtDoctor.Text = "";
+            txtStrip.Text = "";
+            txtTab.Text = "";
+            dataGridProductList.Rows.Clear();
+            txtDiscount.Text = "";
+            lblAmountPayable.Text = "0.00";
+            lblBillAmount.Text = "0.00";
+            getInvoiceID();
+            txtPatientName.Select();
         }
 
         private void btnSaveAndPrint_Click(object sender, EventArgs e)
         {
-            if (!funcCalculate())
+            if (!funcCalculate() || !userInputValidation())
             {
                 return;
             }
+            if (saveRetailBillDetails() == true)//Data saved successfully into database
+            {
+                clearOnSubmit();
+            }
+        }
+
+        private bool saveRetailBillDetails()
+        {
+            //User Input Validation
+            DataTable productTable = new DataTable();
+            objBORetailNewBill.invoiceNumber = txtInvoiceNo.Text;
+            objBORetailNewBill.invoiceDate = dateTimePicker1.Value;
+            objBORetailNewBill.patientName = txtPatientName.Text;
+            objBORetailNewBill.address = txtAddress.Text;
+            objBORetailNewBill.contactNumber = txtContactNo.Text;
+            objBORetailNewBill.doctorName = txtDoctor.Text;
+            objBORetailNewBill.totalMRP = lblBillAmount.Text;
+            objBORetailNewBill.discount = txtDiscount.Text;
+            objBORetailNewBill.amountPayable = lblAmountPayable.Text;
+            //Creating DataTable of ProductList
+            productTable.Columns.AddRange(new DataColumn[]{
+                new DataColumn("batch_no",typeof(string)),
+                new DataColumn("product_name",typeof(string)),
+                new DataColumn("packing",typeof(string)),
+                new DataColumn("expiry", typeof(DateTime)),
+                new DataColumn("whole_quantity",typeof(int)),
+                new DataColumn("loose_quantity",typeof(int)),
+                new DataColumn("mrp_ps",typeof(decimal)),
+                new DataColumn("selling_price_ad",typeof(decimal)),//ad - after discount
+                new DataColumn("total_amount",typeof(decimal))
+            }
+            );
+            //Inserting data into ProductTable from dataGridView
+            string tmpBatch, tmpYear, tmpMonth, tmpDate, tmpExp, tmpProductName, tmpPacking;
+            int tmpWhole, tmpLoose;
+            decimal tmpMrp, tmpDiscount, tmpTotalAmount, tmpSellingPriceAD;
+            DateTime? tmpExpDate;
+
+            if (txtDiscount.Text == "")
+            {
+                tmpDiscount = 0;
+            }
+            else
+            {
+                tmpDiscount = Convert.ToDecimal(txtDiscount.Text);
+            }
+            //Parsing through DataGridRow
+            foreach (DataGridViewRow dRow in dataGridProductList.Rows)
+            {
+                tmpBatch = dRow.Cells[0].Value.ToString();
+                tmpProductName = dRow.Cells[1].Value.ToString();
+                //Packing manipulation - Starts
+                {
+                    string strPacking = dRow.Cells[2].Value.ToString();
+                    tmpPacking = strPacking.Substring(2, strPacking.Length - 2);
+                }
+                //Packing manipulation - Ends
+
+                //Expiry Date - Starts
+                tmpExp = Convert.ToString(dRow.Cells[3].Value);
+                tmpMonth = tmpExp.Substring(0, 2);
+                tmpYear = tmpExp.Substring(3, 4);
+                tmpDate = Convert.ToString(DateTime.DaysInMonth(Convert.ToInt32(tmpYear), Convert.ToInt32(tmpMonth)));
+                tmpExp = tmpMonth + "/" + tmpDate + "/" + tmpYear;
+                tmpExpDate = DateTime.ParseExact(tmpExp, @"M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                //Expiry Date - Ends
+                //Product Quantity - Starts Here
+                if (dRow.Cells[5].Value != "")
+                    tmpWhole = Convert.ToInt32(dRow.Cells[5].Value);
+                else
+                    tmpWhole = 0;
+                if (dRow.Cells[6].Value != "")
+                    tmpLoose = Convert.ToInt32(dRow.Cells[6].Value);
+                else
+                    tmpLoose = 0;
+                //Product Quantity - Ends Here
+                tmpMrp = Convert.ToDecimal(dRow.Cells[7].Value);
+                tmpSellingPriceAD = tmpMrp * ((100 - tmpDiscount) / 100);
+                tmpTotalAmount = Convert.ToDecimal(dRow.Cells[8].Value);
+                productTable.Rows.Add(tmpBatch, tmpProductName, tmpPacking, tmpExpDate, tmpWhole, tmpLoose, tmpMrp, tmpSellingPriceAD, tmpTotalAmount);
+
+            }
+            //Insertion Ends here
+            
+
+            string retMsg = objBALRetailNewBill.saveRetailBillDetails(objBORetailNewBill,productTable);
+            if (retMsg == "success")
+            {
+                MessageBox.Show("Retail Bill Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(retMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private bool userInputValidation()
+        {
             if (Regex.IsMatch(txtInvoiceNo.Text, @"^[0-9,a-z,A-Z]{1,20}$") == false)
             {
                 MessageBox.Show("Invalid Invoice Number, Please enter valid Invoice Number", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtInvoiceNo.Select();
-                return;
+                return false;
             }
             if (dataGridProductList.Rows.Count == 0)
             {
                 MessageBox.Show("No product(s) selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboProductList.Select();
-                return;
+                return false;
             }
-            
+            if (txtPatientName.Text.Length > 100 || txtAddress.Text.Length > 100 || txtDoctor.Text.Length > 100)
+            {
+                MessageBox.Show("Field value cannot be greater than 100 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtContactNo.Text != "" && Regex.Match(txtContactNo.Text, @"^[0-9]{1}[0-9]{9,10}$").Success == false)
+            {
+                MessageBox.Show("Invalid contact number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtContactNo.Select();
+                return false;
+            }
+            return true;
         }
+
     }
 }
