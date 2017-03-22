@@ -237,5 +237,19 @@ namespace medicalInventory
                 funcBringToFront("buyerDetails");
             }
         }
+
+        private void viewBillDetailsToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("retailBillDetails"))
+            {
+                retailBillDetails frmRetailBillDetails = new retailBillDetails();
+                frmRetailBillDetails.MdiParent = this;
+                frmRetailBillDetails.Show();
+            }
+            else
+            {
+                funcBringToFront("retailBillDetails");
+            }
+        }
     }
 }

@@ -331,7 +331,7 @@
             this.newBillToolStripMenuItem1,
             this.viewBillDetailsToolStripMenuItem1});
             this.contextMenuRetailBtn.Name = "contextMenuRetailBtn";
-            this.contextMenuRetailBtn.Size = new System.Drawing.Size(197, 48);
+            this.contextMenuRetailBtn.Size = new System.Drawing.Size(197, 70);
             // 
             // newBillToolStripMenuItem1
             // 
@@ -345,6 +345,7 @@
             this.viewBillDetailsToolStripMenuItem1.Name = "viewBillDetailsToolStripMenuItem1";
             this.viewBillDetailsToolStripMenuItem1.Size = new System.Drawing.Size(196, 22);
             this.viewBillDetailsToolStripMenuItem1.Text = "View Bill Details (Retail)";
+            this.viewBillDetailsToolStripMenuItem1.Click += new System.EventHandler(this.viewBillDetailsToolStripMenuItem1_Click);
             // 
             // contextMenuCustomerMaster
             // 

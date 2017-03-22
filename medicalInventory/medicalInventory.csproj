@@ -108,6 +108,18 @@
     <Compile Include="quickAddProduct.Designer.cs">
       <DependentUpon>quickAddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="retailBillDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="retailBillDetails.Designer.cs">
+      <DependentUpon>retailBillDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="retailBillProductDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="retailBillProductDetails.Designer.cs">
+      <DependentUpon>retailBillProductDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="retailNewBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +180,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="quickAddProduct.resx">
       <DependentUpon>quickAddProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="retailBillDetails.resx">
+      <DependentUpon>retailBillDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="retailBillProductDetails.resx">
+      <DependentUpon>retailBillProductDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="retailNewBill.resx">
       <DependentUpon>retailNewBill.cs</DependentUpon>

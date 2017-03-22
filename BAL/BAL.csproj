@@ -47,6 +47,8 @@
     <Compile Include="BALPurchaseBill.cs" />
     <Compile Include="BALPurchaseBillDetails.cs" />
     <Compile Include="BALPurchaseBillProductDetails.cs" />
+    <Compile Include="BALRetailBillDetails.cs" />
+    <Compile Include="BALRetailBillProductDetails.cs" />
     <Compile Include="BALRetailNewBill.cs" />
     <Compile Include="BALSuppDetails.cs" />
     <Compile Include="BALUpdateProductPacking.cs" />

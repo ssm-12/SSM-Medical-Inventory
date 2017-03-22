@@ -62,6 +62,8 @@
     <Compile Include="DALPurchaseBill.cs" />
     <Compile Include="DALPurchaseBillDetails.cs" />
     <Compile Include="DALPurchaseBillProductDetails.cs" />
+    <Compile Include="DALRetailBillDetails.cs" />
+    <Compile Include="DALRetailBillProductDetails.cs" />
     <Compile Include="DALRetailNewBill.cs" />
     <Compile Include="DALSuppDetails.cs" />
     <Compile Include="DALUpdateProductPacking.cs" />

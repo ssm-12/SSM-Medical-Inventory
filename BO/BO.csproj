@@ -47,6 +47,8 @@
     <Compile Include="BOPurchaseBill.cs" />
     <Compile Include="BOPurchaseBillDetails.cs" />
     <Compile Include="BOPurchaseBillProductDetails.cs" />
+    <Compile Include="BORetailBillDetails.cs" />
+    <Compile Include="BORetailBillProductDetails.cs" />
     <Compile Include="BORetailNewBill.cs" />
     <Compile Include="BOSuppDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
