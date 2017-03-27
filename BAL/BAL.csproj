@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BALBuyerDetails.cs" />
+    <Compile Include="BALChallan.cs" />
+    <Compile Include="BALChallanDetails.cs" />
+    <Compile Include="BALChallanProductDetails.cs" />
+    <Compile Include="BALChallanToBill.cs" />
     <Compile Include="BALlogin.cs" />
     <Compile Include="BALProductDetails.cs" />
     <Compile Include="BALProductSelection_PopUp.cs" />

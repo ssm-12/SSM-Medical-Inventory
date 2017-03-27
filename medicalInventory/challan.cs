@@ -9,45 +9,36 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BAL;
 using BO;
-using System.Text.RegularExpressions;
+
 
 namespace medicalInventory
 {
-    public partial class retailNewBill : Form
+    public partial class challan : Form
     {
-        BALRetailNewBill objBALRetailNewBill = new BALRetailNewBill();
-        BORetailNewBill objBORetailNewBill = new BORetailNewBill();
+        BALChallan objBALChallan = new BALChallan();
+        BOChallan objBOChallan = new BOChallan();
         private static string batchNumber = "";
-        public retailNewBill()
+        public challan()
         {
             InitializeComponent();
         }
 
-        private void retailNewBill_Load(object sender, EventArgs e)
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
         {
-            funcPopulateProductList();
+
+        }
+
+        private void challan_Load(object sender, EventArgs e)
+        {
             getInvoiceID();
+            funcPopulateCustomerList();
+            populateProductList();
         }
 
-        private void getInvoiceID()
-        {
-            string retVal = objBALRetailNewBill.getInvoiceID();
-            if (retVal == "error")
-            {
-                MessageBox.Show("Unable to get new invoice ID. Please double click on the invoice number field to enter manually", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInvoiceNo.Select();
-            }
-            else
-            {
-                txtInvoiceNo.Text = retVal;
-                txtPatientName.Select();
-            }
-        }
-
-        private void funcPopulateProductList()
+        private void populateProductList()
         {
             DataTable dt = new DataTable();
-            dt = objBALRetailNewBill.funcPopulateProductList();
+            dt = objBALChallan.funcPopulateProductList();
             //Failed Scenario
             if (dt.Columns[0].ColumnName == "error")
             {
@@ -63,34 +54,56 @@ namespace medicalInventory
             }
         }
 
-        private void comboProductList_OnChange(object sender, KeyEventArgs e)
+        private void getInvoiceID()
         {
-            if (e.KeyValue == 13)
+            string retVal = objBALChallan.getInvoiceID();
+            if (retVal == "error")
             {
-                showProductPopUp();
+                MessageBox.Show("Unable to get new invoice ID. Please double click on the invoice number field to enter manually", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtChallanNo.Select();
+            }
+            else
+            {
+                txtChallanNo.ReadOnly = true;
+                txtChallanNo.Text = retVal;
+                comboCustomerList.Select();
             }
         }
 
-       private void showProductPopUp()
-       {
-           if (comboProductList.SelectedValue == null)
-           {
-               MessageBox.Show("Please select product from the list", "Product Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return;
-           }
-           productSelection_Popup frmProductPopUp = new productSelection_Popup(comboProductList.SelectedValue.ToString());
-           frmProductPopUp.ShowDialog(this);
-           batchNumber = frmProductPopUp.getResult();
-       }
-
-       private void clearGlobal(object sender, System.EventArgs e)
-       {
-           batchNumber = "";
-       }
-
-        private void txtInvoiceNo_DoubleClickEvent(object sender, EventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            txtInvoiceNo.ReadOnly = false;
+            if (keyData == Keys.F2)//Add New Supplier
+            {
+                buyerDetails frmBuyerDetails = new buyerDetails(1);
+                frmBuyerDetails.ShowDialog(this);
+                funcPopulateCustomerList();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void funcPopulateCustomerList()
+        { 
+            DataTable dt = new DataTable();
+            dt = objBALChallan.funcPopulateCustomerList();
+            //Failed Scenario
+            if (dt.Columns[0].ColumnName == "error")
+            {
+                string errorCode = Convert.ToString(dt.Rows[0]["error"]);
+                MessageBox.Show("Unable to Retreive Customer List", errorCode, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //Success Scenario
+            else
+            {
+                comboCustomerList.DataSource = dt;
+                comboCustomerList.DisplayMember = Convert.ToString(dt.Columns[1]);
+                comboCustomerList.ValueMember = Convert.ToString(dt.Columns[0]);
+            }
+        }
+
+        private void txtChallanNo_DoubleClick(object sender, EventArgs e)
+        {
+            txtChallanNo.ReadOnly = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -108,13 +121,13 @@ namespace medicalInventory
                 txtStrip.Select();
                 return;
             }
-            if (!Regex.Match(txtStrip.Text, @"^[0-9]+$").Success && txtStrip.Text != "")
+            if (!System.Text.RegularExpressions.Regex.Match(txtStrip.Text, @"^[0-9]+$").Success && txtStrip.Text != "")
             {
                 MessageBox.Show("Quantity should be numeric value only", "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtStrip.Select();
                 return;
             }
-            if (!Regex.Match(txtTab.Text, @"^[0-9]+$").Success && txtTab.Text != "")
+            if (!System.Text.RegularExpressions.Regex.Match(txtTab.Text, @"^[0-9]+$").Success && txtTab.Text != "")
             {
                 MessageBox.Show("Quantity should be numeric value only", "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTab.Select();
@@ -128,7 +141,7 @@ namespace medicalInventory
             }
             //Validation Ends
 
-            DataTable dt = objBALRetailNewBill.funcGetBatchDetails(batchNumber, comboProductList.SelectedValue.ToString());
+            DataTable dt = objBALChallan.funcGetBatchDetails(batchNumber, comboProductList.SelectedValue.ToString());
             if (dt.Columns[0].ColumnName == "error")
             {
                 string errorCode = Convert.ToString(dt.Rows[0]["error"]);
@@ -162,8 +175,8 @@ namespace medicalInventory
                 mrp_per_unit = Convert.ToDecimal(dt.Rows[0][5]);
                 available_strip = Convert.ToDecimal(dt.Rows[0][6]);
                 available_tab = Convert.ToDecimal(dt.Rows[0][7]);
-                available_quant = (available_strip*packing)+available_tab;
-                selling_quant = (strip*packing)+tab;
+                available_quant = (available_strip * packing) + available_tab;
+                selling_quant = (strip * packing) + tab;
                 if (tab >= packing)
                 {
                     MessageBox.Show("Tab Quantity cannot be greater than or equal to packing quantity", "Invalid Tab Quantity", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -188,6 +201,31 @@ namespace medicalInventory
 
         }
 
+        private void clearGlobal(object sender, System.EventArgs e)
+        {
+            batchNumber = "";
+        }
+
+        private void comboProductList_OnChange(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                showProductPopUp();
+            }
+        }
+
+        private void showProductPopUp()
+        {
+            if (comboProductList.SelectedValue == null)
+            {
+                MessageBox.Show("Please select product from the list", "Product Not Selected", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            productSelection_Popup frmProductPopUp = new productSelection_Popup(comboProductList.SelectedValue.ToString());
+            frmProductPopUp.ShowDialog(this);
+            batchNumber = frmProductPopUp.getResult();
+        }
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             funcCalculate();
@@ -195,88 +233,38 @@ namespace medicalInventory
 
         private bool funcCalculate()
         {
-            decimal bill_amount = 0, discount, amount_payable = 0;
-            if (!Regex.Match(txtDiscount.Text, @"^[0-9,.]+$").Success && txtDiscount.Text != "")
-            {
-                MessageBox.Show("Discount Percentage should be numeric only", "Wrong Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtDiscount.Select();
-                return false;
-            }
-            if (txtDiscount.Text == "")
-            {
-                discount = 0;
-                txtDiscount.Text = "0.00";
-            }
-            else
-            {
-                discount = Convert.ToDecimal(txtDiscount.Text);
-            }
-            discount = Math.Round(discount, 2);
+            decimal totalAmount = 0;
             foreach (DataGridViewRow drow in dataGridProductList.Rows)
             {
-                bill_amount += Convert.ToDecimal(drow.Cells[8].Value);
+                totalAmount += Convert.ToDecimal(drow.Cells[8].Value);
             }
-            lblBillAmount.Text = bill_amount.ToString();
-            amount_payable = bill_amount * ((100 - discount) / 100);
-            amount_payable = Math.Round(amount_payable, 2);
-            lblAmountPayable.Text = amount_payable.ToString();
+            totalAmount = Math.Round(totalAmount, 2);
+            lblChallanAmount.Text = totalAmount.ToString();
+
             return true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!funcCalculate() || !userInputValidation())
+            if (!userInputValidation() || !funcCalculate())
             {
                 return;
             }
-            if (saveRetailBillDetails() == true)//Data saved successfully into database
-            {
-                clearOnSubmit();
+            if (saveChallanDetails())
+            { 
+                //Success
             }
+
         }
 
-        private void clearOnSubmit()
+        private bool saveChallanDetails()
         {
-            txtPatientName.Text = "";
-            txtAddress.Text = "";
-            txtContactNo.Text = "";
-            txtDoctor.Text = "";
-            txtStrip.Text = "";
-            txtTab.Text = "";
-            dataGridProductList.Rows.Clear();
-            txtDiscount.Text = "";
-            lblAmountPayable.Text = "0.00";
-            lblBillAmount.Text = "0.00";
-            getInvoiceID();
-            txtPatientName.Select();
-        }
-
-        private void btnSaveAndPrint_Click(object sender, EventArgs e)
-        {
-            if (!funcCalculate() || !userInputValidation())
-            {
-                return;
-            }
-            if (saveRetailBillDetails() == true)//Data saved successfully into database
-            {
-                clearOnSubmit();
-            }
-        }
-
-        private bool saveRetailBillDetails()
-        {
-            //User Input Validation
+            objBOChallan.challanNumber = txtChallanNo.Text;
+            objBOChallan.challanDate = dateTimePicker1.Value;
+            objBOChallan.customerID = comboCustomerList.SelectedValue.ToString();
+            objBOChallan.challanAmount = Convert.ToDecimal(lblChallanAmount.Text);
+            //Product Table - Start Here
             DataTable productTable = new DataTable();
-            objBORetailNewBill.invoiceNumber = txtInvoiceNo.Text;
-            objBORetailNewBill.invoiceDate = dateTimePicker1.Value;
-            objBORetailNewBill.patientName = txtPatientName.Text;
-            objBORetailNewBill.address = txtAddress.Text;
-            objBORetailNewBill.contactNumber = txtContactNo.Text;
-            objBORetailNewBill.doctorName = txtDoctor.Text;
-            objBORetailNewBill.totalMRP = lblBillAmount.Text;
-            objBORetailNewBill.discount = txtDiscount.Text;
-            objBORetailNewBill.amountPayable = lblAmountPayable.Text;
-            //Creating DataTable of ProductList
             productTable.Columns.AddRange(new DataColumn[]{
                 new DataColumn("batch_no",typeof(string)),
                 new DataColumn("product_name",typeof(string)),
@@ -285,24 +273,13 @@ namespace medicalInventory
                 new DataColumn("whole_quantity",typeof(int)),
                 new DataColumn("loose_quantity",typeof(int)),
                 new DataColumn("mrp_ps",typeof(decimal)),
-                new DataColumn("selling_price_ad",typeof(decimal)),//ad - after discount
                 new DataColumn("total_amount",typeof(decimal))
             }
             );
-            //Inserting data into ProductTable from dataGridView
             string tmpBatch, tmpYear, tmpMonth, tmpDate, tmpExp, tmpProductName, tmpPacking;
             int tmpWhole, tmpLoose;
-            decimal tmpMrp, tmpDiscount, tmpTotalAmount, tmpSellingPriceAD;
+            decimal tmpMrp, tmpTotalAmount;
             DateTime? tmpExpDate;
-
-            if (txtDiscount.Text == "")
-            {
-                tmpDiscount = 0;
-            }
-            else
-            {
-                tmpDiscount = Convert.ToDecimal(txtDiscount.Text);
-            }
             //Parsing through DataGridRow
             foreach (DataGridViewRow dRow in dataGridProductList.Rows)
             {
@@ -334,18 +311,16 @@ namespace medicalInventory
                     tmpLoose = 0;
                 //Product Quantity - Ends Here
                 tmpMrp = Convert.ToDecimal(dRow.Cells[7].Value);
-                tmpSellingPriceAD = tmpMrp * ((100 - tmpDiscount) / 100);
                 tmpTotalAmount = Convert.ToDecimal(dRow.Cells[8].Value);
-                productTable.Rows.Add(tmpBatch, tmpProductName, tmpPacking, tmpExpDate, tmpWhole, tmpLoose, tmpMrp, tmpSellingPriceAD, tmpTotalAmount);
-
+                productTable.Rows.Add(tmpBatch, tmpProductName, tmpPacking, tmpExpDate, tmpWhole, tmpLoose, tmpMrp, tmpTotalAmount);
             }
             //Insertion Ends here
-            
-
-            string retMsg = objBALRetailNewBill.saveRetailBillDetails(objBORetailNewBill,productTable);
+            //Product Table - Ends Here
+            string retMsg = objBALChallan.saveChallanDetails(objBOChallan, productTable);
             if (retMsg == "success")
             {
-                MessageBox.Show("Retail Bill Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Challan Details Saved Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cleanUpOnSubmission();
                 return true;
             }
             else
@@ -355,33 +330,51 @@ namespace medicalInventory
             }
         }
 
+        private void cleanUpOnSubmission()
+        {
+            lblChallanAmount.Text = "0.00";
+            dataGridProductList.Rows.Clear();
+            comboProductList.SelectedIndex = 0;
+            txtStrip.Text = "";
+            txtTab.Text = "";
+            comboCustomerList.SelectedIndex = 0;
+            dateTimePicker1.Value = DateTime.Today;
+            getInvoiceID();
+        }
+
         private bool userInputValidation()
         {
-            if (Regex.IsMatch(txtInvoiceNo.Text, @"^[0-9,a-z,A-Z]{1,20}$") == false)
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtChallanNo.Text, @"^[0-9,a-z,A-Z]{1,20}$") == false)
             {
-                MessageBox.Show("Invalid Invoice Number, Please enter valid Invoice Number", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtInvoiceNo.Select();
+                MessageBox.Show("Invalid Challan Number, Please enter valid Challan Number", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtChallanNo.Select();
                 return false;
             }
             if (dataGridProductList.Rows.Count == 0)
             {
-                MessageBox.Show("No product(s) selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No product(s) selected", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 comboProductList.Select();
                 return false;
             }
-            if (txtPatientName.Text.Length > 100 || txtAddress.Text.Length > 100 || txtDoctor.Text.Length > 100)
+            if (comboCustomerList.SelectedValue == null)
             {
-                MessageBox.Show("Field value cannot be greater than 100 characters", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (txtContactNo.Text != "" && Regex.Match(txtContactNo.Text, @"^[0-9]{1}[0-9]{9,10}$").Success == false)
-            {
-                MessageBox.Show("Invalid contact number", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtContactNo.Select();
+                MessageBox.Show("Please select customer", "User Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                comboCustomerList.Select();
                 return false;
             }
             return true;
         }
 
+        private void btnSaveAndPrint_Click(object sender, EventArgs e)
+        {
+            if (!userInputValidation() || !funcCalculate())
+            {
+                return;
+            }
+            if (saveChallanDetails())
+            {
+                //Success + Printing Code goes here
+            }
+        }
     }
 }

@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOBuyerDetails.cs" />
+    <Compile Include="BOChallan.cs" />
+    <Compile Include="BOChallanDetails.cs" />
+    <Compile Include="BOChallanProductDetails.cs" />
+    <Compile Include="BOChallanToBill.cs" />
     <Compile Include="BOlogin.cs" />
     <Compile Include="BOProductDetails.cs" />
     <Compile Include="BOProductSelection_PopUp.cs" />

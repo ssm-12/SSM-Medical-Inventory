@@ -31,14 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btn3 = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
-            this.btnProduct = new System.Windows.Forms.Button();
+            this.btn3 = new System.Windows.Forms.Button();
             this.btnBuyerDetails = new System.Windows.Forms.Button();
-            this.btnRetail = new System.Windows.Forms.Button();
-            this.btnSupply = new System.Windows.Forms.Button();
             this.btnSuppDetails = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
+            this.btnRetail = new System.Windows.Forms.Button();
             this.btnPurchase = new System.Windows.Forms.Button();
+            this.btnSupply = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -61,6 +61,11 @@
             this.contextMenuCustomerMaster = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuAddCustomer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuModifyCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuSupply = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.createChallanToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewChallanDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.convertChallanToBillToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewBillDetailsToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -69,6 +74,7 @@
             this.contextMenuPurchaseBtn.SuspendLayout();
             this.contextMenuRetailBtn.SuspendLayout();
             this.contextMenuCustomerMaster.SuspendLayout();
+            this.contextMenuSupply.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -90,17 +96,18 @@
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.InsetDouble;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btnDashboard, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btn3, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.btnDashboard, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnProduct, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnBuyerDetails, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.btnRetail, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.btnSupply, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.btnSuppDetails, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.btnPurchase, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnReturn, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnProduct, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.btnRetail, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnPurchase, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.btnSupply, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.btnReturn, 0, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 9;
@@ -116,100 +123,100 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(188, 376);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // btn3
-            // 
-            this.btn3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btn3.Location = new System.Drawing.Point(3, 331);
-            this.btn3.Name = "btn3";
-            this.btn3.Size = new System.Drawing.Size(182, 42);
-            this.btn3.TabIndex = 8;
-            this.btn3.Text = "Extra3";
-            this.btn3.UseVisualStyleBackColor = true;
-            // 
             // btnDashboard
             // 
             this.btnDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDashboard.Location = new System.Drawing.Point(3, 3);
+            this.btnDashboard.Location = new System.Drawing.Point(6, 129);
             this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(182, 35);
-            this.btnDashboard.TabIndex = 0;
+            this.btnDashboard.Size = new System.Drawing.Size(176, 32);
+            this.btnDashboard.TabIndex = 3;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btNewOrder_Click);
             // 
-            // btnProduct
+            // btn3
             // 
-            this.btnProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnProduct.Location = new System.Drawing.Point(3, 44);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(182, 35);
-            this.btnProduct.TabIndex = 1;
-            this.btnProduct.Text = "Product Master";
-            this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_click);
+            this.btn3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn3.Location = new System.Drawing.Point(6, 334);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(176, 36);
+            this.btn3.TabIndex = 8;
+            this.btn3.Text = "Extra3";
+            this.btn3.UseVisualStyleBackColor = true;
             // 
             // btnBuyerDetails
             // 
             this.btnBuyerDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBuyerDetails.Location = new System.Drawing.Point(3, 290);
+            this.btnBuyerDetails.Location = new System.Drawing.Point(6, 293);
             this.btnBuyerDetails.Name = "btnBuyerDetails";
-            this.btnBuyerDetails.Size = new System.Drawing.Size(182, 35);
+            this.btnBuyerDetails.Size = new System.Drawing.Size(176, 32);
             this.btnBuyerDetails.TabIndex = 7;
             this.btnBuyerDetails.Text = "Customer Master";
             this.btnBuyerDetails.UseVisualStyleBackColor = true;
             this.btnBuyerDetails.Click += new System.EventHandler(this.btnCustomerMaster_Click);
             // 
-            // btnRetail
-            // 
-            this.btnRetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRetail.Location = new System.Drawing.Point(3, 85);
-            this.btnRetail.Name = "btnRetail";
-            this.btnRetail.Size = new System.Drawing.Size(182, 35);
-            this.btnRetail.TabIndex = 2;
-            this.btnRetail.Text = "Retail";
-            this.btnRetail.UseVisualStyleBackColor = true;
-            this.btnRetail.Click += new System.EventHandler(this.btnRetail_Click);
-            // 
-            // btnSupply
-            // 
-            this.btnSupply.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSupply.Location = new System.Drawing.Point(3, 126);
-            this.btnSupply.Name = "btnSupply";
-            this.btnSupply.Size = new System.Drawing.Size(182, 35);
-            this.btnSupply.TabIndex = 3;
-            this.btnSupply.Text = "Supply";
-            this.btnSupply.UseVisualStyleBackColor = true;
-            this.btnSupply.Click += new System.EventHandler(this.btnSupply_Click);
-            // 
             // btnSuppDetails
             // 
             this.btnSuppDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSuppDetails.Location = new System.Drawing.Point(3, 249);
+            this.btnSuppDetails.Location = new System.Drawing.Point(6, 252);
             this.btnSuppDetails.Name = "btnSuppDetails";
-            this.btnSuppDetails.Size = new System.Drawing.Size(182, 35);
+            this.btnSuppDetails.Size = new System.Drawing.Size(176, 32);
             this.btnSuppDetails.TabIndex = 6;
             this.btnSuppDetails.Text = "Supplier Master";
             this.btnSuppDetails.UseVisualStyleBackColor = true;
             this.btnSuppDetails.Click += new System.EventHandler(this.btnSuppDetails_Click);
             // 
+            // btnProduct
+            // 
+            this.btnProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnProduct.Location = new System.Drawing.Point(6, 211);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(176, 32);
+            this.btnProduct.TabIndex = 5;
+            this.btnProduct.Text = "Product Master";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_click);
+            // 
+            // btnRetail
+            // 
+            this.btnRetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRetail.Location = new System.Drawing.Point(6, 6);
+            this.btnRetail.Name = "btnRetail";
+            this.btnRetail.Size = new System.Drawing.Size(176, 32);
+            this.btnRetail.TabIndex = 0;
+            this.btnRetail.Text = "Retail";
+            this.btnRetail.UseVisualStyleBackColor = true;
+            this.btnRetail.Click += new System.EventHandler(this.btnRetail_Click);
+            // 
             // btnPurchase
             // 
             this.btnPurchase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPurchase.Location = new System.Drawing.Point(3, 167);
+            this.btnPurchase.Location = new System.Drawing.Point(6, 47);
             this.btnPurchase.Name = "btnPurchase";
-            this.btnPurchase.Size = new System.Drawing.Size(182, 35);
-            this.btnPurchase.TabIndex = 4;
+            this.btnPurchase.Size = new System.Drawing.Size(176, 32);
+            this.btnPurchase.TabIndex = 1;
             this.btnPurchase.Text = "Purchase";
             this.btnPurchase.UseVisualStyleBackColor = true;
             this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
+            // btnSupply
+            // 
+            this.btnSupply.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSupply.Location = new System.Drawing.Point(6, 88);
+            this.btnSupply.Name = "btnSupply";
+            this.btnSupply.Size = new System.Drawing.Size(176, 32);
+            this.btnSupply.TabIndex = 2;
+            this.btnSupply.Text = "Supply";
+            this.btnSupply.UseVisualStyleBackColor = true;
+            this.btnSupply.Click += new System.EventHandler(this.btnSupply_Click);
+            // 
             // btnReturn
             // 
             this.btnReturn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnReturn.Location = new System.Drawing.Point(3, 208);
+            this.btnReturn.Location = new System.Drawing.Point(6, 170);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(182, 35);
-            this.btnReturn.TabIndex = 5;
+            this.btnReturn.Size = new System.Drawing.Size(176, 32);
+            this.btnReturn.TabIndex = 4;
             this.btnReturn.Text = "Return";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 
@@ -331,7 +338,7 @@
             this.newBillToolStripMenuItem1,
             this.viewBillDetailsToolStripMenuItem1});
             this.contextMenuRetailBtn.Name = "contextMenuRetailBtn";
-            this.contextMenuRetailBtn.Size = new System.Drawing.Size(197, 70);
+            this.contextMenuRetailBtn.Size = new System.Drawing.Size(197, 48);
             // 
             // newBillToolStripMenuItem1
             // 
@@ -369,6 +376,42 @@
             this.toolStripMenuModifyCustomer.Text = "View/Modify Customer Details";
             this.toolStripMenuModifyCustomer.Click += new System.EventHandler(this.toolStripMenuModifyCustomer_Click);
             // 
+            // contextMenuSupply
+            // 
+            this.contextMenuSupply.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.createChallanToolStripMenuItem,
+            this.viewChallanDetailsToolStripMenuItem,
+            this.convertChallanToBillToolStripMenuItem,
+            this.viewBillDetailsToolStripMenuItem2});
+            this.contextMenuSupply.Name = "contextMenuSupply";
+            this.contextMenuSupply.Size = new System.Drawing.Size(193, 114);
+            // 
+            // createChallanToolStripMenuItem
+            // 
+            this.createChallanToolStripMenuItem.Name = "createChallanToolStripMenuItem";
+            this.createChallanToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.createChallanToolStripMenuItem.Text = "Create Challan";
+            this.createChallanToolStripMenuItem.Click += new System.EventHandler(this.createChallanToolStripMenuItem_Click);
+            // 
+            // viewChallanDetailsToolStripMenuItem
+            // 
+            this.viewChallanDetailsToolStripMenuItem.Name = "viewChallanDetailsToolStripMenuItem";
+            this.viewChallanDetailsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.viewChallanDetailsToolStripMenuItem.Text = "View Challan Details";
+            this.viewChallanDetailsToolStripMenuItem.Click += new System.EventHandler(this.viewChallanDetailsToolStripMenuItem_Click);
+            // 
+            // convertChallanToBillToolStripMenuItem
+            // 
+            this.convertChallanToBillToolStripMenuItem.Name = "convertChallanToBillToolStripMenuItem";
+            this.convertChallanToBillToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.convertChallanToBillToolStripMenuItem.Text = "Convert Challan to Bill";
+            // 
+            // viewBillDetailsToolStripMenuItem2
+            // 
+            this.viewBillDetailsToolStripMenuItem2.Name = "viewBillDetailsToolStripMenuItem2";
+            this.viewBillDetailsToolStripMenuItem2.Size = new System.Drawing.Size(192, 22);
+            this.viewBillDetailsToolStripMenuItem2.Text = "View Bill Details";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,6 +435,7 @@
             this.contextMenuPurchaseBtn.ResumeLayout(false);
             this.contextMenuRetailBtn.ResumeLayout(false);
             this.contextMenuCustomerMaster.ResumeLayout(false);
+            this.contextMenuSupply.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,5 +475,10 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuCustomerMaster;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuAddCustomer;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuModifyCustomer;
+        private System.Windows.Forms.ContextMenuStrip contextMenuSupply;
+        private System.Windows.Forms.ToolStripMenuItem createChallanToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewChallanDetailsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem convertChallanToBillToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewBillDetailsToolStripMenuItem2;
     }
 }

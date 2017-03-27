@@ -56,6 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALBuyerDetails.cs" />
+    <Compile Include="DALChallan.cs" />
+    <Compile Include="DALChallanDetails.cs" />
+    <Compile Include="DALChallanProductDetails.cs" />
+    <Compile Include="DALChallanToBill.cs" />
     <Compile Include="DALlogin.cs" />
     <Compile Include="DALProductDetails.cs" />
     <Compile Include="DALProductSelection_PopUp.cs" />

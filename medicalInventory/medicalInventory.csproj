@@ -54,6 +54,30 @@
     <Compile Include="buyerDetails.Designer.cs">
       <DependentUpon>buyerDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="challan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="challan.Designer.cs">
+      <DependentUpon>challan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="challanDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="challanDetails.Designer.cs">
+      <DependentUpon>challanDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="challanProductDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="challanProductDetails.Designer.cs">
+      <DependentUpon>challanProductDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="challanToBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="challanToBill.Designer.cs">
+      <DependentUpon>challanToBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +177,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="buyerDetails.resx">
       <DependentUpon>buyerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="challan.resx">
+      <DependentUpon>challan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="challanDetails.resx">
+      <DependentUpon>challanDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="challanProductDetails.resx">
+      <DependentUpon>challanProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="challanToBill.resx">
+      <DependentUpon>challanToBill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

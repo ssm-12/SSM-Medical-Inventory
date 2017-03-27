@@ -88,7 +88,7 @@ namespace medicalInventory
 
         private void btnSupply_Click(object sender, EventArgs e)
         {
-
+            contextMenuSupply.Show(btnSupply, new Point(btnSupply.Width, 0));
         }
 
         private void toolStripAddProduct_Click(object sender, EventArgs e)
@@ -249,6 +249,40 @@ namespace medicalInventory
             else
             {
                 funcBringToFront("retailBillDetails");
+            }
+        }
+
+        private void createChallanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("challan"))
+            {
+                pleaseWaitForm frmPleaseWait = new pleaseWaitForm();
+                frmPleaseWait.Show();
+                Application.DoEvents();
+                challan frmChallan = new challan();
+                frmChallan.MdiParent = this;
+                Cursor.Position = this.PointToScreen(new Point(0, 0));
+                frmChallan.Show();
+                frmPleaseWait.Close();
+            }
+            else
+            {
+                funcBringToFront("challan");
+            }
+        }
+
+        private void viewChallanDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!funcIsFormOpen("challanDetails"))
+            {
+                challanDetails frmChallan = new challanDetails();
+                frmChallan.MdiParent = this;
+                Cursor.Position = this.PointToScreen(new Point(0, 0));
+                frmChallan.Show();
+            }
+            else
+            {
+                funcBringToFront("challanDetails");
             }
         }
     }

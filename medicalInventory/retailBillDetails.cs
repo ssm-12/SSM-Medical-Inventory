@@ -73,7 +73,7 @@ namespace medicalInventory
                 }
             }
             retailBillProductDetails frmProdDetails = new retailBillProductDetails(objBORetailProductDetails);
-            frmProdDetails.ShowDialog(this);
+            frmProdDetails.ShowDialog(this); 
         }
 
     }
